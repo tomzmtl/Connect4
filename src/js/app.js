@@ -6,6 +6,7 @@ import App from './containers/App';
 import counter from './reducers/counter';
 import store from './store';
 
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={createStore(counter, store)}>

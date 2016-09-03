@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import { incrementCounter, decrementCounter } from '../actions/counter';
-import Counter from '../components/Counter';
+import Root from '../components/Root';
 
 const mapStateToProps = (state) => ({
-  counter: state.counter,
+  grid: state.grid,
+  data: state.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,4 +19,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Counter);
+)(Root);

@@ -1,3 +1,7 @@
 export default {
-  counter: 0,
+  grid: {
+    width: 8,
+    height: 5,
+  },
+  data: [],
 };

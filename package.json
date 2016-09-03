@@ -1,5 +1,5 @@
 {
-  "name": "spark",
+  "name": "connect4",
   "version": "0.1.0",
   "description": "Single Page App Boilerplate",
   "main": "index.html",
@@ -7,7 +7,8 @@
   "scripts": {
     "webpack": "webpack --watch",
     "test": "mocha --opts src/js/test/mocha.opts --harmony || true",
-    "travis": "mocha --opts src/js/test/travis.opts --harmony"
+    "travis": "mocha --opts src/js/test/travis.opts --harmony",
+    "start": "webpack-dev-server --port 3000"
   },
   "author": "Thomas Andreo",
   "license": "MIT",
@@ -23,10 +24,13 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-react": "^5.2.2",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
   },
   "dependencies": {
     "expectations": "^0.6.0",
+    "lodash.take": "^4.1.1",
+    "lodash.times": "^4.3.2",
     "mocha": "^3.0.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",

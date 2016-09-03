@@ -1,0 +1,33 @@
+* { box-sizing: border-box }
+
+body {
+  background: #222;
+  color: white;
+  margin: 0;
+}
+
+#app > div {
+  height: 100vh;
+  display: flex;
+}
+
+.grid {
+  display: flex;
+  margin: auto;
+  border: 1px solid #666;
+}
+
+.grid .cell {
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+
+.grid .col:last-child .cell {
+  border-right: none;
+}
+
+.grid .cell:last-child {
+  border-bottom: none;
+}
