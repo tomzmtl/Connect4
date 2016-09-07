@@ -1,19 +1,18 @@
 import React, { PropTypes } from 'react';
 import times from 'lodash.times';
-import Cell from './Cell';
+import Cell from '../containers/CellContainer';
 
 
-const Col = ({ rows }) => {
-  return (
-    <div className="col">
-      {times(rows, (y) => (<Cell key={y} />))}
-    </div>
-  );
-};
+const Col = ({ rows, x }) => (
+  <div className="col">
+    {times(rows, (y) => (<Cell key={y} x={x} y={y} />))}
+  </div>
+);
 
 
 Col.propTypes = {
   rows: PropTypes.number.isRequired,
+  x: PropTypes.number.isRequired,
 };
 
 

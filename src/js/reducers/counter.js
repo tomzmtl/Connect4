@@ -1,20 +1,13 @@
+import data from './data';
+
 export default (state, action) => {
   switch (action.type) {
 
-    case 'INCREMENT_COUNTER':
+    case 'HIGHLIGHT_CELL':
+    case 'UNHIGHLIGHT_CELL':
       return {
         ...state,
-        counter: state.counter + 1,
-      };
-
-    case 'DECREMENT_COUNTER':
-      if (state.counter === 0) {
-        return state;
-      }
-
-      return {
-        ...state,
-        counter: state.counter - 1,
+        data: data(state, action),
       };
 
     default:

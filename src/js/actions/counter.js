@@ -1,11 +1,15 @@
 export default null;
 
 
-export const incrementCounter = () => ({
-  type: 'INCREMENT_COUNTER',
+export const highlightCell = (x, y) => ({
+  type: 'HIGHLIGHT_CELL',
+  x,
+  y,
 });
 
 
-export const decrementCounter = () => ({
-  type: 'DECREMENT_COUNTER',
+export const unhighlightCell = (x, y) => ({
+  type: 'UNHIGHLIGHT_CELL',
+  x,
+  y,
 });
