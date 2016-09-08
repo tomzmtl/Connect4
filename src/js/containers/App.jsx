@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter } from '../actions/counter';
 import Root from '../components/Root';
 
 const mapStateToProps = (state) => ({
@@ -7,16 +6,15 @@ const mapStateToProps = (state) => ({
   data: state.data,
 });
 
+/*
 const mapDispatchToProps = (dispatch) => ({
   onIncrement: () => {
     dispatch(incrementCounter());
   },
-  onDecrement: () => {
-    dispatch(decrementCounter());
-  },
 });
+*/
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
+  // mapDispatchToProps
 )(Root);

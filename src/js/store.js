@@ -1,11 +1,13 @@
 import times from 'lodash.times';
-import { indexToCoords } from './helpers/grid';
+import { indexToCoords } from '../modules/grid/helpers/grid';
+import { CELL_SIZE } from './config';
 
 
 const store = {
   grid: {
     width: 7,
     height: 6,
+    cellSize: CELL_SIZE,
   },
   data: [],
 };

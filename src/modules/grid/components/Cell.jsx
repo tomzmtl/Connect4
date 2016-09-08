@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
-import { CELL_SIZE } from '../config';
 
 
-const Cell = ({ data, index, onCellEnter, onCellLeave }) => {
+const Cell = ({ data, index, onCellEnter, onCellLeave, size }) => {
   const classNames = ['cell'];
 
   if (data.highlightedX) {
@@ -18,16 +17,16 @@ const Cell = ({ data, index, onCellEnter, onCellLeave }) => {
     onMouseEnter: () => onCellEnter(index),
     onMouseLeave: () => onCellLeave(index),
     style: {
-      width: CELL_SIZE,
-      height: CELL_SIZE,
+      width: size,
+      height: size,
     },
   };
 
   const innerProps = {
     className: 'inner',
     style: {
-      width: CELL_SIZE - 2,
-      height: CELL_SIZE - 2,
+      width: size - 2,
+      height: size - 2,
     },
   };
 
@@ -44,6 +43,7 @@ Cell.propTypes = {
   index: PropTypes.number.isRequired,
   onCellEnter: PropTypes.func.isRequired,
   onCellLeave: PropTypes.func.isRequired,
+  size: PropTypes.number.isRequired,
 };
 
 

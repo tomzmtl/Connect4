@@ -11,31 +11,3 @@ body {
   height: 100vh;
   display: flex;
 }
-
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-
-  .inner {
-    display: flex;
-    margin: auto;
-    background: #111;
-
-    & > span {
-      margin: auto;
-    }
-  }
-
-  .highlight__x .inner {
-    background: #113;
-  }
-
-  .highlight__y .inner {
-    background: #311;
-  }
-
-  .highlight__y.highlight__x .inner {
-    background: #313;
-  }
-}

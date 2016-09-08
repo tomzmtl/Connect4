@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { CELL_SIZE } from '../config';
 import times from 'lodash.times';
 import Cell from '../containers/CellContainer';
+import '../scss/grid.scss';
 
 
 const renderCells = (width, height) => {
@@ -11,7 +11,7 @@ const renderCells = (width, height) => {
 
 
 const Grid = ({ grid }) => (
-  <div className="grid" style={{ width: CELL_SIZE * grid.width }}>
+  <div className="grid" style={{ width: grid.cellSize * grid.width }}>
     {renderCells(grid.width, grid.height)}
   </div>
 );
