@@ -8,7 +8,7 @@ import App from './containers/App';
 import counter from './reducers/counter';
 import initStore from './store';
 
-import '../scss/app.scss';
+import './scss/app.scss';
 
 const store = createStore(counter, initStore());
 

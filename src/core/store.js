@@ -1,5 +1,5 @@
 import times from 'lodash.times';
-import { indexToCoords } from '../modules/grid/helpers/grid';
+import { indexToCoords } from '../grid/helpers/grid';
 import { CELL_SIZE } from './config';
 
 

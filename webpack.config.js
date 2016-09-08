@@ -4,7 +4,7 @@ const publicPath = (path) => `./public/${path}`;
 
 module.exports = {
 
-  entry: ['./src/js/app.js'],
+  entry: ['./src/core/app.js'],
   output: {
     filename: publicPath('js/bundle.js'),
   },
