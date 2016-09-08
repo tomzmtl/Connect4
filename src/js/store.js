@@ -19,6 +19,8 @@ export default () => {
       return {
         x: coords[0],
         y: coords[1],
+        highlightedX: false,
+        highlightedY: false,
       };
     }),
   };

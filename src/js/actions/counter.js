@@ -1,15 +1,13 @@
 export default null;
 
 
-export const highlightCell = (x, y) => ({
+export const highlightCell = (index) => ({
   type: 'HIGHLIGHT_CELL',
-  x,
-  y,
+  index,
 });
 
 
-export const unhighlightCell = (x, y) => ({
+export const unhighlightCell = (index) => ({
   type: 'UNHIGHLIGHT_CELL',
-  x,
-  y,
+  index,
 });

@@ -1,9 +1,14 @@
+import { indexToCoords } from '../helpers/grid';
+
+
 export default (state, action) => {
   switch (action.type) {
     case 'HIGHLIGHT_CELL':
       return state.data.map((cell) => {
-        const hX = cell.x === action.x;
-        const hY = cell.y === action.y;
+        const coords = indexToCoords(state.grid.width, state.grid.height, action.index);
+
+        const hY = cell.x === coords[0];
+        const hX = cell.y === coords[1];
 
         if (hX === cell.highlightedX && hY === cell.highlightedY) {
           return cell;

@@ -2,17 +2,16 @@ import { connect } from 'react-redux';
 import { highlightCell, unhighlightCell } from '../actions/counter';
 import Cell from '../components/Cell';
 
-const mapStateToProps = (state) => ({
-  grid: state.grid,
-  data: state.data,
+const mapStateToProps = (state, ownProps) => ({
+  data: state.data[ownProps.index],
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCellEnter: (x, y) => {
-    dispatch(highlightCell(x, y));
+  onCellEnter: (index) => {
+    dispatch(highlightCell(index));
   },
-  onCellLeave: (x, y) => {
-    dispatch(unhighlightCell(x, y));
+  onCellLeave: (index) => {
+    dispatch(unhighlightCell(index));
   },
 });
 

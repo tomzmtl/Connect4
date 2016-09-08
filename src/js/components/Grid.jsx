@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import times from 'lodash.times';
-import Col from './Col';
+import Cell from '../containers/CellContainer';
 
 
 const Grid = ({ grid }) => (
-  <div className="grid">
-    {times(grid.width, (x) => (<Col key={x} x={x} rows={grid.height} />))}
+  <div className="grid" style={{ width: (50 + 1) * grid.width }}>
+    {times(grid.width * grid.height, (index) => (<Cell index={index} key={index} />))}
   </div>
 );
 
