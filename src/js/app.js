@@ -8,8 +8,6 @@ import initStore from './store';
 
 const store = createStore(counter, initStore());
 
-console.log(store.getState());
-
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
