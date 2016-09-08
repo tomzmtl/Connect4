@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { CELL_SIZE } from '../config';
 
 
 const Cell = ({ data, index, onCellEnter, onCellLeave }) => {
@@ -17,16 +18,16 @@ const Cell = ({ data, index, onCellEnter, onCellLeave }) => {
     onMouseEnter: () => onCellEnter(index),
     onMouseLeave: () => onCellLeave(index),
     style: {
-      width: 50,
-      height: 50,
+      width: CELL_SIZE,
+      height: CELL_SIZE,
     },
   };
 
   const innerProps = {
     className: 'inner',
     style: {
-      width: 50 - 2,
-      height: 50 - 2,
+      width: CELL_SIZE - 2,
+      height: CELL_SIZE - 2,
     },
   };
 
