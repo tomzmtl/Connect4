@@ -23,6 +23,7 @@ export default () => {
         y: coords[1],
         highlightedX: false,
         highlightedY: false,
+        owner: null,
       };
     }),
   };

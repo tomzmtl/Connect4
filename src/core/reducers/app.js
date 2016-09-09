@@ -5,6 +5,7 @@ export default (state, action) => {
 
     case 'HIGHLIGHT_CELL':
     case 'UNHIGHLIGHT_CELL':
+    case 'CLICK_CELL':
       return {
         ...state,
         data: data(state, action),

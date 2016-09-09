@@ -32,6 +32,22 @@ export default (state, action) => {
         highlightedY: false,
       }));
 
+    case 'CLICK_CELL': {
+      if (state.data[action.index].owner) {
+        return state.data;
+      }
+
+      const clicked = {
+        ...state.data[action.index],
+        owner: 1,
+      };
+
+      return [
+        ...state.data.slice(0, action.index),
+        clicked,
+        ...state.data.slice(action.index + 1),
+      ];
+    }
 
     default: return state.data;
   }

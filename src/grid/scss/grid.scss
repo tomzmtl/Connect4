@@ -21,7 +21,11 @@
     background: #311;
   }
 
-  .highlight__y.highlight__x .inner {
+  .highlight__xy .inner {
     background: #313;
+  }
+
+  .owned .inner {
+    background: red;
   }
 }
