@@ -12,12 +12,12 @@ describe('Grid Helpers', () => {
   });
 
   it('Calculates index from coords', () => {
-    expect(coordsToIndex(3, 3, 0, 0)).toEqual(0);
-    expect(coordsToIndex(4, 3, 3, 0)).toEqual(3);
-    expect(coordsToIndex(3, 3, 0, 2)).toEqual(6);
-    expect(coordsToIndex(7, 6, 0, 1)).toEqual(7);
-    expect(coordsToIndex(7, 6, 1, 1)).toEqual(8);
-    expect(coordsToIndex(7, 6, 4, 2)).toEqual(18);
-    expect(coordsToIndex(4, 4, 3, 3)).toEqual(15);
+    expect(coordsToIndex(3, 0, 0)).toEqual(0);
+    expect(coordsToIndex(4, 3, 0)).toEqual(3);
+    expect(coordsToIndex(3, 2, 1)).toEqual(5);
+    expect(coordsToIndex(7, 5, 0)).toEqual(5);
+    expect(coordsToIndex(7, 6, 1)).toEqual(13);
+    expect(coordsToIndex(7, 4, 2)).toEqual(18);
+    expect(coordsToIndex(4, 3, 3)).toEqual(15);
   });
 });

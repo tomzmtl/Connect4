@@ -11,3 +11,9 @@ export const unhighlightCell = (index) => ({
   type: 'UNHIGHLIGHT_CELL',
   index,
 });
+
+
+export const clickCell = (index) => ({
+  type: 'CLICK_CELL',
+  index,
+});

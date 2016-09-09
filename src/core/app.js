@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Grid from '../grid/containers/GridContainer';
-import counter from './reducers/counter';
+import reducer from './reducers/app';
 import initStore from './store';
 
 import './scss/app.scss';
 
-const store = createStore(counter, initStore());
+const store = createStore(reducer, initStore());
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

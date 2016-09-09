@@ -7,8 +7,8 @@
   "scripts": {
     "lint": "eslint src/**/*.js || true",
     "start": "webpack-dev-server --port 3000",
-    "test": "mocha --opts src/js/test/mocha.opts --harmony || true",
-    "travis": "mocha --opts src/js/test/travis.opts --harmony",
+    "test": "mocha --opts config/mocha.opts --harmony || true",
+    "travis": "mocha --opts config/travis.opts --harmony",
     "webpack": "webpack --watch"
   },
   "author": "Thomas Andreo",

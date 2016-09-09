@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { highlightCell, unhighlightCell } from '../actions/grid';
+import { highlightCell, unhighlightCell, clickCell } from '../actions/grid';
 import Cell from '../components/Cell';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onCellLeave: (index) => {
     dispatch(unhighlightCell(index));
+  },
+  onCellClick: (index) => {
+    dispatch(clickCell(index));
   },
 });
 
