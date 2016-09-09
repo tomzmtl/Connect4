@@ -10,15 +10,17 @@ const renderCells = (width, height) => {
 };
 
 
-const Grid = ({ grid }) => (
-  <div className="grid" style={{ width: grid.cellSize * grid.width }}>
-    {renderCells(grid.width, grid.height)}
+const Grid = ({ width, height, cellSize }) => (
+  <div className="grid" style={{ width: cellSize * width }}>
+    {renderCells(width, height)}
   </div>
 );
 
 
 Grid.propTypes = {
-  grid: PropTypes.object.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  cellSize: PropTypes.number.isRequired,
 };
 
 

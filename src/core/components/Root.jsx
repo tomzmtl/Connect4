@@ -1,15 +1,10 @@
-import React, { PropTypes } from 'react';
-import Grid from '../../grid/components/Grid';
+import React from 'react';
+import Grid from '../../grid/containers/GridContainer';
 
-const Root = ({ grid, data }) => (
+const Root = () => (
   <div>
-    <Grid grid={grid} data={data} />
+    <Grid />
   </div>
 );
-
-Root.propTypes = {
-  data: PropTypes.array.isRequired,
-  grid: PropTypes.object.isRequired,
-};
 
 export default Root;
