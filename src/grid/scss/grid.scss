@@ -8,25 +8,30 @@
     margin: auto;
     background: #111;
     border-radius: 50%;
+    transition: background 100ms ease-out;
 
     & > span {
       margin: auto;
     }
   }
 
-  .highlight__y .inner {
+  .highlight__player-1 .inner {
     background: #311;
+  }
+
+  .highlight__player-2 .inner {
+    background: #331;
   }
 
   .owned .inner {
     font-weight: bold;
   }
 
-  .owned.player-1 .inner {
+  .owned__player-1 .inner {
     background: #F44;
   }
 
-  .owned.player-2 .inner {
+  .owned__player-2 .inner {
     background: #FF4;
     color: black;
   }

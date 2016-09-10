@@ -4,6 +4,7 @@ import Tile from '../components/Tile';
 
 const mapStateToProps = (state, ownProps) => ({
   size: state.grid.tileSize,
+  player: state.game.player,
   data: state.tiles[ownProps.index],
 });
 

@@ -22,11 +22,12 @@ export default () => {
     tiles: times(width * height, (index) => {
       const coords = indexToCoords(width, height, index);
       return {
+        index,
         x: coords[0],
         y: coords[1],
+        owner: null,
         highlightedX: false,
         highlightedY: false,
-        owner: null,
       };
     }),
   };

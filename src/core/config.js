@@ -1,4 +1,4 @@
 export default null;
 
 
-export const TILE_SIZE = 50;
+export const TILE_SIZE = 80;
