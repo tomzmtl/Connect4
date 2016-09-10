@@ -13,7 +13,7 @@ export const unhighlightTile = (index) => ({
 });
 
 
-export const clickTile = (index) => ({
-  type: 'CLICK_TILE',
+export const placeTile = (index) => ({
+  type: 'PLACE_TILE',
   index,
 });

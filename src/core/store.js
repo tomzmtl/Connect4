@@ -6,6 +6,7 @@ import { TILE_SIZE } from './config';
 const store = {
   game: {
     player: 1,
+    turn: 1,
   },
   grid: {
     width: 7,

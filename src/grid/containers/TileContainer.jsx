@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { highlightTile, unhighlightTile, clickTile } from '../actions/grid';
+import { highlightTile, unhighlightTile, placeTile } from '../actions/grid';
 import Tile from '../components/Tile';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   onTileLeave: (index) => {
     dispatch(unhighlightTile(index));
   },
-  onTileClick: (index) => {
-    dispatch(clickTile(index));
+  placeTile: (index) => {
+    dispatch(placeTile(index));
   },
 });
 

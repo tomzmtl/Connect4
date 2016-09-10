@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 
-const Tile = ({ data, index, onTileEnter, onTileLeave, onTileClick, size, player }) => {
+const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, size, player }) => {
   const classNames = ['tile'];
 
   if (data.highlightedY) {
@@ -12,17 +12,19 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, onTileClick, size, player
     classNames.push(`owned__player-${data.owner}`);
   }
 
-
   const tileProps = {
     className: classNames.join(' '),
     onMouseEnter: () => onTileEnter(index),
     onMouseLeave: () => onTileLeave(index),
-    onClick: () => onTileClick(index),
     style: {
       width: size,
       height: size,
     },
   };
+
+  if (!data.owned) {
+    tileProps.onClick = () => placeTile(index);
+  }
 
   const innerProps = {
     className: 'inner',
@@ -45,7 +47,7 @@ Tile.propTypes = {
   index: PropTypes.number.isRequired,
   onTileEnter: PropTypes.func.isRequired,
   onTileLeave: PropTypes.func.isRequired,
-  onTileClick: PropTypes.func.isRequired,
+  placeTile: PropTypes.func.isRequired,
   size: PropTypes.number.isRequired,
   player: PropTypes.number.isRequired,
 };

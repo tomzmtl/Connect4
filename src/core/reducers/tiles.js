@@ -7,21 +7,12 @@ export default (state, action) => {
     case 'HIGHLIGHT_TILE':
       return state.tiles.map((tile) => {
         const hY = tile.x === state.tiles[action.index].x;
-        const hX = tile.y === state.tiles[action.index].y;
-
-        if (hX === tile.highlightedX && hY === tile.highlightedY) {
-          return tile;
-        }
 
         const newTile = {
           ...tile,
         };
 
-        if (hX !== tile.highlightedX) {
-          newTile.highlightedX = hX;
-        }
-
-        if (hY !== tile.highlightedY) {
+        if (hY !== tile.highlightedY && !tile.owner) {
           newTile.highlightedY = hY;
         }
 
@@ -35,7 +26,7 @@ export default (state, action) => {
         highlightedY: false,
       }));
 
-    case 'CLICK_TILE': {
+    case 'PLACE_TILE': {
       const clicked = state.tiles[action.index];
       if (clicked.owner) {
         return state.tiles;

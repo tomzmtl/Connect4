@@ -11,7 +11,7 @@ export default (state, action) => {
         tiles: tiles(state, action),
       };
 
-    case 'CLICK_TILE':
+    case 'PLACE_TILE':
       return {
         ...state,
         tiles: tiles(state, action),
