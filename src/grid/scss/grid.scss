@@ -8,6 +8,7 @@
     margin: auto;
     background: #111;
     border-radius: 50%;
+    border: 1px solid black;
     transition: background 100ms ease-out;
 
     & > span {
@@ -16,11 +17,11 @@
   }
 
   .highlight__player-1 .inner {
-    background: #311;
+    background: #211;
   }
 
   .highlight__player-2 .inner {
-    background: #331;
+    background: #221;
   }
 
   .owned .inner {

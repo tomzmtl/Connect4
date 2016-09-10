@@ -9,6 +9,7 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, size, player }
   }
 
   if (data.owner) {
+    classNames.push('owned');
     classNames.push(`owned__player-${data.owner}`);
   }
 

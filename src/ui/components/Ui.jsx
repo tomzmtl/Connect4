@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
+import '../scss/ui.scss';
 
 
 const Ui = ({ player, turn }) => (
   <div className="ui">
-    <strong>Turn:</strong> {turn}
-    <br />
-    <strong>Player:</strong> {player}
+    <ul>
+      <li><strong>Turn:</strong> {turn}</li>
+      <li><strong>Player:</strong> {player}</li>
+    </ul>
   </div>
 );
 
