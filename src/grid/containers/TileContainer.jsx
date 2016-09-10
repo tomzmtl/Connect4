@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { highlightTile, unhighlightTile, placeTile } from '../actions/grid';
+import { highlightColumn, unhighlightColumn, placeTile } from '../actions/grid';
 import Tile from '../components/Tile';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,10 +10,10 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onTileEnter: (index) => {
-    dispatch(highlightTile(index));
+    dispatch(highlightColumn(index));
   },
   onTileLeave: (index) => {
-    dispatch(unhighlightTile(index));
+    dispatch(unhighlightColumn(index));
   },
   placeTile: (index) => {
     dispatch(placeTile(index));

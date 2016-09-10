@@ -27,7 +27,6 @@ export default () => {
         x: coords[0],
         y: coords[1],
         owner: null,
-        highlightedX: false,
         highlightedY: false,
       };
     }),

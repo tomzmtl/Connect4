@@ -4,8 +4,8 @@ import game from './game';
 export default (state, action) => {
   switch (action.type) {
 
-    case 'HIGHLIGHT_TILE':
-    case 'UNHIGHLIGHT_TILE':
+    case 'HIGHLIGHT_COLUMN':
+    case 'UNHIGHLIGHT_COLUMN':
       return {
         ...state,
         tiles: tiles(state, action),

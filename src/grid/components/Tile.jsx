@@ -14,8 +14,8 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, size, player }
 
   const tileProps = {
     className: classNames.join(' '),
-    onMouseEnter: () => onTileEnter(index),
-    onMouseLeave: () => onTileLeave(index),
+    onMouseEnter: () => onTileEnter(data.x),
+    onMouseLeave: () => onTileLeave(data.x),
     style: {
       width: size,
       height: size,
