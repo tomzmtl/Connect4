@@ -4,6 +4,9 @@ import { CELL_SIZE } from './config';
 
 
 const store = {
+  game: {
+    player: 1,
+  },
   grid: {
     width: 7,
     height: 6,

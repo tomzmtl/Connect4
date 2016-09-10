@@ -2,18 +2,14 @@ import React, { PropTypes } from 'react';
 
 
 const Cell = ({ data, index, onCellEnter, onCellLeave, onCellClick, size }) => {
-  const classNames = ['cell'];
+  let classNames = ['cell'];
 
-  if (data.highlightedX && data.highlightedY) {
-    classNames.push('highlight__xy');
-  } else if (data.highlightedX) {
-    classNames.push('highlight__x');
-  } else if (data.highlightedY) {
+  if (data.highlightedY) {
     classNames.push('highlight__y');
   }
 
   if (data.owner) {
-    classNames.push('owned');
+    classNames = classNames.concat(['owned', `player-${data.owner}`]);
   }
 
   const cellProps = {

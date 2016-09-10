@@ -1,6 +1,7 @@
 
 export default (state, action) => {
   switch (action.type) {
+
     case 'HIGHLIGHT_CELL':
       return state.data.map((cell) => {
         const hY = cell.x === state.data[action.index].x;
@@ -39,7 +40,7 @@ export default (state, action) => {
 
       const clicked = {
         ...state.data[action.index],
-        owner: 1,
+        owner: state.game.player,
       };
 
       return [

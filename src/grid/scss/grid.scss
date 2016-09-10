@@ -7,25 +7,27 @@
     display: flex;
     margin: auto;
     background: #111;
+    border-radius: 50%;
 
     & > span {
       margin: auto;
     }
   }
 
-  .highlight__x .inner {
-    background: #113;
-  }
-
   .highlight__y .inner {
     background: #311;
   }
 
-  .highlight__xy .inner {
-    background: #313;
+  .owned .inner {
+    font-weight: bold;
   }
 
-  .owned .inner {
-    background: red;
+  .owned.player-1 .inner {
+    background: #F44;
+  }
+
+  .owned.player-2 .inner {
+    background: #FF4;
+    color: black;
   }
 }
