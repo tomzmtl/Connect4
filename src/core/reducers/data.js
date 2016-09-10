@@ -2,38 +2,38 @@
 export default (state, action) => {
   switch (action.type) {
 
-    case 'HIGHLIGHT_CELL':
-      return state.data.map((cell) => {
-        const hY = cell.x === state.data[action.index].x;
-        const hX = cell.y === state.data[action.index].y;
+    case 'HIGHLIGHT_TILE':
+      return state.data.map((tile) => {
+        const hY = tile.x === state.data[action.index].x;
+        const hX = tile.y === state.data[action.index].y;
 
-        if (hX === cell.highlightedX && hY === cell.highlightedY) {
-          return cell;
+        if (hX === tile.highlightedX && hY === tile.highlightedY) {
+          return tile;
         }
 
-        const newCell = {
-          ...cell,
+        const newTile = {
+          ...tile,
         };
 
-        if (hX !== cell.highlightedX) {
-          newCell.highlightedX = hX;
+        if (hX !== tile.highlightedX) {
+          newTile.highlightedX = hX;
         }
 
-        if (hY !== cell.highlightedY) {
-          newCell.highlightedY = hY;
+        if (hY !== tile.highlightedY) {
+          newTile.highlightedY = hY;
         }
 
-        return newCell;
+        return newTile;
       });
 
-    case 'UNHIGHLIGHT_CELL':
-      return state.data.map((cell) => ({
-        ...cell,
+    case 'UNHIGHLIGHT_TILE':
+      return state.data.map((tile) => ({
+        ...tile,
         highlightedX: false,
         highlightedY: false,
       }));
 
-    case 'CLICK_CELL': {
+    case 'CLICK_TILE': {
       if (state.data[action.index].owner) {
         return state.data;
       }

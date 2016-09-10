@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
 
-const Cell = ({ data, index, onCellEnter, onCellLeave, onCellClick, size }) => {
-  let classNames = ['cell'];
+const Tile = ({ data, index, onTileEnter, onTileLeave, onTileClick, size }) => {
+  let classNames = ['tile'];
 
   if (data.highlightedY) {
     classNames.push('highlight__y');
@@ -12,11 +12,11 @@ const Cell = ({ data, index, onCellEnter, onCellLeave, onCellClick, size }) => {
     classNames = classNames.concat(['owned', `player-${data.owner}`]);
   }
 
-  const cellProps = {
+  const tileProps = {
     className: classNames.join(' '),
-    onMouseEnter: () => onCellEnter(index),
-    onMouseLeave: () => onCellLeave(index),
-    onClick: () => onCellClick(index),
+    onMouseEnter: () => onTileEnter(index),
+    onMouseLeave: () => onTileLeave(index),
+    onClick: () => onTileClick(index),
     style: {
       width: size,
       height: size,
@@ -32,21 +32,21 @@ const Cell = ({ data, index, onCellEnter, onCellLeave, onCellClick, size }) => {
   };
 
   return (
-    <div {...cellProps}>
+    <div {...tileProps}>
       <div {...innerProps}>
         <span>{index}</span>
       </div>
     </div>);
 };
 
-Cell.propTypes = {
+Tile.propTypes = {
   data: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
-  onCellEnter: PropTypes.func.isRequired,
-  onCellLeave: PropTypes.func.isRequired,
-  onCellClick: PropTypes.func.isRequired,
+  onTileEnter: PropTypes.func.isRequired,
+  onTileLeave: PropTypes.func.isRequired,
+  onTileClick: PropTypes.func.isRequired,
   size: PropTypes.number.isRequired,
 };
 
 
-export default Cell;
+export default Tile;

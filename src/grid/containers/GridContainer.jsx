@@ -4,7 +4,7 @@ import Grid from '../components/Grid';
 const mapStateToProps = (state) => ({
   width: state.grid.width,
   height: state.grid.height,
-  cellSize: state.grid.cellSize,
+  tileSize: state.grid.tileSize,
 });
 
 export default connect(mapStateToProps)(Grid);

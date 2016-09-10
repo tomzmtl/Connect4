@@ -1,19 +1,19 @@
 export default null;
 
 
-export const highlightCell = (index) => ({
-  type: 'HIGHLIGHT_CELL',
+export const highlightTile = (index) => ({
+  type: 'HIGHLIGHT_TILE',
   index,
 });
 
 
-export const unhighlightCell = (index) => ({
-  type: 'UNHIGHLIGHT_CELL',
+export const unhighlightTile = (index) => ({
+  type: 'UNHIGHLIGHT_TILE',
   index,
 });
 
 
-export const clickCell = (index) => ({
-  type: 'CLICK_CELL',
+export const clickTile = (index) => ({
+  type: 'CLICK_TILE',
   index,
 });
