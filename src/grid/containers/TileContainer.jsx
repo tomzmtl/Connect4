@@ -4,7 +4,7 @@ import Tile from '../components/Tile';
 
 const mapStateToProps = (state, ownProps) => ({
   size: state.grid.tileSize,
-  data: state.data[ownProps.index],
+  data: state.tiles[ownProps.index],
 });
 
 const mapDispatchToProps = (dispatch) => ({

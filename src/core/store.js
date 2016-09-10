@@ -12,14 +12,14 @@ const store = {
     height: 6,
     tileSize: TILE_SIZE,
   },
-  data: [],
+  tiles: [],
 };
 
 export default () => {
   const { width, height } = store.grid;
   return {
     ...store,
-    data: times(width * height, (index) => {
+    tiles: times(width * height, (index) => {
       const coords = indexToCoords(width, height, index);
       return {
         x: coords[0],

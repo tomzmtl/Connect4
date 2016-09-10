@@ -1,4 +1,4 @@
-import data from './data';
+import tiles from './tiles';
 import game from './game';
 
 export default (state, action) => {
@@ -8,13 +8,13 @@ export default (state, action) => {
     case 'UNHIGHLIGHT_TILE':
       return {
         ...state,
-        data: data(state, action),
+        tiles: tiles(state, action),
       };
 
     case 'CLICK_TILE':
       return {
         ...state,
-        data: data(state, action),
+        tiles: tiles(state, action),
         game: game(state.game, action),
       };
 

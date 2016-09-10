@@ -3,9 +3,9 @@ export default (state, action) => {
   switch (action.type) {
 
     case 'HIGHLIGHT_TILE':
-      return state.data.map((tile) => {
-        const hY = tile.x === state.data[action.index].x;
-        const hX = tile.y === state.data[action.index].y;
+      return state.tiles.map((tile) => {
+        const hY = tile.x === state.tiles[action.index].x;
+        const hX = tile.y === state.tiles[action.index].y;
 
         if (hX === tile.highlightedX && hY === tile.highlightedY) {
           return tile;
@@ -27,29 +27,29 @@ export default (state, action) => {
       });
 
     case 'UNHIGHLIGHT_TILE':
-      return state.data.map((tile) => ({
+      return state.tiles.map((tile) => ({
         ...tile,
         highlightedX: false,
         highlightedY: false,
       }));
 
     case 'CLICK_TILE': {
-      if (state.data[action.index].owner) {
-        return state.data;
+      if (state.tiles[action.index].owner) {
+        return state.tiles;
       }
 
       const clicked = {
-        ...state.data[action.index],
+        ...state.tiles[action.index],
         owner: state.game.player,
       };
 
       return [
-        ...state.data.slice(0, action.index),
+        ...state.tiles.slice(0, action.index),
         clicked,
-        ...state.data.slice(action.index + 1),
+        ...state.tiles.slice(action.index + 1),
       ];
     }
 
-    default: return state.data;
+    default: return state.tiles;
   }
 };
