@@ -15,7 +15,7 @@ export default (state, action) => {
       return {
         ...state,
         tiles: tiles(state, action),
-        game: game(state.game, action),
+        game: game(state, action),
       };
 
     default:

@@ -1,13 +1,16 @@
 
-export default (game, action) => {
+export default (state, action) => {
   switch (action.type) {
 
     case 'PLACE_TILE':
+      if (state.tiles[action.index].owner) {
+        return state.game;
+      }
       return {
-        player: game.player === 1 ? 2 : 1,
-        turn: game.turn + 1,
+        player: state.game.player === 1 ? 2 : 1,
+        turn: state.game.turn + 1,
       };
 
-    default: return game;
+    default: return state.game;
   }
 };
