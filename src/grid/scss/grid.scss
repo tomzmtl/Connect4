@@ -2,37 +2,44 @@
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+}
+
+
+.tile {
+  display: flex;
 
   .inner {
     display: flex;
+    width: 20px;
+    height: 20px;
     margin: auto;
-    background: #111;
+    background: #666;
     border-radius: 50%;
-    border: 1px solid black;
-    transition: background 100ms ease-out;
+    transition: 100ms ease-out;
 
     & > span {
       margin: auto;
+      display: none;
     }
   }
 
-  .highlight__player-1 .inner {
-    background: #211;
+  &.highlight__player-1 .inner,
+  &.highlight__player-2 .inner {
+    background: #777;
   }
 
-  .highlight__player-2 .inner {
-    background: #221;
+  &.owned {
+    .inner {
+      width: 40px;
+      height: 40px;
+    }
   }
 
-  .owned .inner {
-    font-weight: bold;
-  }
-
-  .owned__player-1 .inner {
+  &.owned__player-1 .inner {
     background: #F44;
   }
 
-  .owned__player-2 .inner {
+  &.owned__player-2 .inner {
     background: #FF4;
     color: black;
   }

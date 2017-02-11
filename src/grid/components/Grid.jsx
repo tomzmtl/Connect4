@@ -6,7 +6,7 @@ import '../scss/grid.scss';
 
 const renderTiles = (width, height) => {
   const count = width * height;
-  return times(count, (index) => (<Tile index={index} key={index} />));
+  return times(count, index => (<Tile index={index} key={index} />));
 };
 
 

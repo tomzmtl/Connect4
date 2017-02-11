@@ -29,10 +29,10 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, size, player }
 
   const innerProps = {
     className: 'inner',
-    style: {
-      width: size - 2,
-      height: size - 2,
-    },
+    // style: {
+    //   width: size - 2,
+    //   height: size - 2,
+    // },
   };
 
   return (
