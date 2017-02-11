@@ -1,11 +1,14 @@
 import { col, lowestOwnedIndex } from '../../grid/helpers/grid.js';
 
 
-export default (state, action) => {
+export default ({ grid, game }, action) => {
+  if (game.winner) {
+    return grid.cells;
+  }
   switch (action.type) {
 
     case 'HIGHLIGHT_COLUMN':
-      return state.tiles.map(tile => {
+      return grid.cells.map((tile) => {
         if (tile.x === action.x) {
           return {
             ...tile,
@@ -17,7 +20,7 @@ export default (state, action) => {
       });
 
     case 'UNHIGHLIGHT_COLUMN':
-      return state.tiles.map(tile => {
+      return grid.cells.map((tile) => {
         if (tile.x !== action.x) {
           return tile;
         }
@@ -28,25 +31,25 @@ export default (state, action) => {
       });
 
     case 'PLACE_TILE': {
-      const clicked = state.tiles[action.index];
+      const clicked = grid.cells[action.index];
       if (clicked.owner) {
-        return state.tiles;
+        return grid.cells;
       }
 
-      const index = lowestOwnedIndex(col(state.tiles, clicked.x));
+      const index = lowestOwnedIndex(col(grid.cells, clicked.x));
 
       const updated = {
-        ...state.tiles[index],
-        owner: state.game.player,
+        ...grid.cells[index],
+        owner: game.player,
       };
 
       return [
-        ...state.tiles.slice(0, index),
+        ...grid.cells.slice(0, index),
         updated,
-        ...state.tiles.slice(index + 1),
+        ...grid.cells.slice(index + 1),
       ];
     }
 
-    default: return state.tiles;
+    default: return grid.cells;
   }
 };

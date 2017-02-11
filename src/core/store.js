@@ -1,27 +1,18 @@
 import times from 'lodash.times';
 import { indexToCoords } from '../grid/helpers/grid';
 import { TILE_SIZE } from './config';
+import Grid from './tiled/Grid';
 
 
-const store = {
+const s = {
   game: {
     player: 1,
     turn: 1,
+    winner: null,
   },
   grid: {
-    width: 7,
-    height: 6,
-    tileSize: TILE_SIZE,
-  },
-  tiles: [],
-};
-
-export default () => {
-  const { width, height } = store.grid;
-  return {
-    ...store,
-    tiles: times(width * height, (index) => {
-      const coords = indexToCoords(width, height, index);
+    ...Grid.create(7, 6, times(42, (index) => {
+      const coords = indexToCoords(7, 6, index);
       return {
         index,
         x: coords[0],
@@ -29,6 +20,10 @@ export default () => {
         owner: null,
         highlightedY: false,
       };
-    }),
-  };
+    })),
+    tileSize: TILE_SIZE,
+  },
 };
+
+
+export default s;

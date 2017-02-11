@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import Ui from '../components/Ui';
 
-const mapStateToProps = (state) => ({
-  player: state.game.player,
-  turn: state.game.turn,
+const mapStateToProps = ({ game }) => ({
+  ...game,
 });
 
 export default connect(mapStateToProps)(Ui);

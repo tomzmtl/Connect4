@@ -3,14 +3,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createLogger from 'redux-logger';
 import reducer from './reducers/app';
-import initStore from './store';
+import initialStore from './store';
 import App from './components/App';
 
 import './scss/app.scss';
 
-const store = createStore(reducer, initStore());
+const logger = createLogger({
+  collapsed: true,
+  diff: true,
+});
+
+const store = createStore(reducer, initialStore, applyMiddleware(logger));
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

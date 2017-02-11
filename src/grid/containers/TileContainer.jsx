@@ -5,10 +5,10 @@ import Tile from '../components/Tile';
 const mapStateToProps = (state, ownProps) => ({
   size: state.grid.tileSize,
   player: state.game.player,
-  data: state.tiles[ownProps.index],
+  data: state.grid.cells[ownProps.index],
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onTileEnter: (index) => {
     dispatch(highlightColumn(index));
   },

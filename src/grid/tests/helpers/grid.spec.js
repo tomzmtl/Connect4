@@ -1,5 +1,6 @@
 import { coordsToIndex, indexToCoords } from '../../helpers/grid';
 
+
 describe('Grid Helpers', () => {
   it('Calculates coords from index', () => {
     expect(indexToCoords(3, 3, 0)).toEqual([0, 0]);

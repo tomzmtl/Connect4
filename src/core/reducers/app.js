@@ -1,4 +1,4 @@
-import tiles from './tiles';
+import grid from './grid';
 import game from './game';
 
 export default (state, action) => {
@@ -8,13 +8,13 @@ export default (state, action) => {
     case 'UNHIGHLIGHT_COLUMN':
       return {
         ...state,
-        tiles: tiles(state, action),
+        grid: grid(state, action),
       };
 
     case 'PLACE_TILE':
       return {
         ...state,
-        tiles: tiles(state, action),
+        grid: grid(state, action),
         game: game(state, action),
       };
 
