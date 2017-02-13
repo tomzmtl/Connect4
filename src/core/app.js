@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
 import reducer from './reducers/app';
 import initialStore from './store';
 import App from './components/App';
@@ -16,7 +17,7 @@ const logger = createLogger({
   diff: true,
 });
 
-const store = createStore(reducer, initialStore, applyMiddleware(logger));
+const store = createStore(reducer, initialStore, applyMiddleware(logger, thunk));
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

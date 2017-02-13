@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
+import { TILE_SIZE } from '../../core/config';
 
 
-const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, size, player }) => {
+const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, player }) => {
   const classNames = ['tile'];
 
   if (data.highlightedY) {
@@ -18,8 +19,8 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, size, player }
     onMouseEnter: () => onTileEnter(data.x),
     onMouseLeave: () => onTileLeave(data.x),
     style: {
-      width: size,
-      height: size,
+      width: TILE_SIZE,
+      height: TILE_SIZE,
     },
   };
 
@@ -49,7 +50,6 @@ Tile.propTypes = {
   onTileEnter: PropTypes.func.isRequired,
   onTileLeave: PropTypes.func.isRequired,
   placeTile: PropTypes.func.isRequired,
-  size: PropTypes.number.isRequired,
   player: PropTypes.number.isRequired,
 };
 

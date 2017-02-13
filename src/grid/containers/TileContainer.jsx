@@ -3,7 +3,6 @@ import { highlightColumn, unhighlightColumn, placeTile } from '../actions/grid';
 import Tile from '../components/Tile';
 
 const mapStateToProps = (state, ownProps) => ({
-  size: state.grid.tileSize,
   player: state.game.player,
   data: state.grid.cells[ownProps.index],
 });

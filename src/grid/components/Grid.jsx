@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import times from 'lodash.times';
 import Tile from '../containers/TileContainer';
+import { TILE_SIZE } from '../../core/config';
 import '../scss/grid.scss';
 
 
@@ -10,8 +11,8 @@ const renderTiles = (width, height) => {
 };
 
 
-const Grid = ({ width, height, tileSize }) => (
-  <div className="grid" style={{ width: tileSize * width }}>
+const Grid = ({ width, height }) => (
+  <div className="grid" style={{ width: TILE_SIZE * width }}>
     {renderTiles(width, height)}
   </div>
 );
@@ -20,7 +21,6 @@ const Grid = ({ width, height, tileSize }) => (
 Grid.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  tileSize: PropTypes.number.isRequired,
 };
 
 

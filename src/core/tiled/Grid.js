@@ -3,97 +3,99 @@ import Point from './Point';
 import { coordsToIndex, indexToCoords } from './helpers';
 
 
-const Grid = {
-  width: 0,
-  height: 0,
-  size: 0,
-  cells: [],
+const create = (width, height, cells = []) => {
+  const size = width * height;
+  return {
+    width,
+    height,
+    size,
+    cells: cells.length ? cells : times(size, index => index),
+  };
+};
 
 
-  slice(p1, width = 1, height = 1) {
-    const points = [
-      p1,
-      Point.create(p1.x + width - 1, p1.y + height - 1),
-    ];
+const slice = (grid, point, width = 1, height = 1) => {
+  let points = [
+    point,
+    Point.create(point.x + width - 1, point.y + height - 1),
+  ];
 
-    if (points[0].y > points[1].y || (points[0].y === points[1].y && points[0].x > points[1].x)) {
-      points.reverse();
+  if (points[0].y > points[1].y || (points[0].y === points[1].y && points[0].x > points[1].x)) {
+    points.reverse();
+  }
+
+  points = points.map(point => Point.applyTo(point, grid));
+
+  const point1 = points[0];
+  const point2 = points[1];
+
+  const cells = [];
+  for (let y = point1.y; y <= point2.y; y += 1) {
+    for (let x = point1.x; x <= point2.x; x += 1) {
+      cells.push(grid.cells[coordsToIndex(grid.width, x, y)]);
     }
+  }
 
-    const point1 = points[0];
-    const point2 = points[1];
-
-    [point1, point2].forEach(point => point.applyTo(this));
-
-    const cells = [];
-    for (let y = point1.y; y <= point2.y; y += 1) {
-      for (let x = point1.x; x <= point2.x; x += 1) {
-        cells.push(this.cells[coordsToIndex(this.width, x, y)]);
-      }
-    }
-
-    return api.create(point2.x - point1.x + 1, point2.y - point1.y + 1, cells);
-  },
+  return create(point2.x - point1.x + 1, point2.y - point1.y + 1, cells);
+};
 
 
-  sliceCol(x) {
-    return this.slice(Point.create(x, 1), 1, this.height);
-  },
+const sliceCol = (grid, x) => slice(grid, Point.create(x, 1), 1, grid.height);
 
 
-  sliceRow(y) {
-    return this.slice(Point.create(1, y), this.width, 1);
-  },
+const sliceRow = (grid, y) => slice(grid, Point.create(1, y), grid.width, 1);
 
 
-  match(grid) {
-    if (this.width !== grid.width || this.height !== grid.height) {
+const match = (grid1, grid2) => {
+  if (grid1.width !== grid2.width || grid1.height !== grid2.height) {
+    return false;
+  }
+
+  for (let i = 0; i < grid1.cells.length; i += 1) {
+    if (grid1.cells[i] !== grid2.cells[i]) {
       return false;
     }
-
-    for (let i = 0; i < this.cells.length; i += 1) {
-      if (this.cells[i] !== grid.cells[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  },
-
-
-  indexOf(grid) {
-    for (let y = 1; y <= this.height - grid.height + 1; y += 1) {
-      for (let x = 1; x <= this.width - grid.width + 1; x += 1) {
-        const point = Point.create(x,y);
-        const subgrid = this.slice(point, grid.width, grid.height);
-        if (subgrid.match(grid)) {
-          return point;
-        }
-      }
-    }
-    return null;
-  },
-
-
-  includes(grid) {
-    return this.indexOf(grid) !== null;
   }
+
+  return true;
 };
 
 
-const api = {
-  create: (width, height, cells = []) => {
-    const size = width * height;
-    return Object.assign(
-      Object.create(Grid),
-      {
-        width,
-        height,
-        size,
-        cells: cells.length ? cells : times(size, index => index),
-      });
-    },
+const matchPredicate = (grid, fn) => {
+  for (let i = 0; i < grid.cells.length; i += 1) {
+    if (!fn(grid.cells[i])) {
+      return false;
+    }
+  }
+
+  return true;
 };
 
 
-export default api;
+const indexOf = (haystack, needle) => {
+  for (let y = 1; y <= haystack.height - (needle.height + 1); y += 1) {
+    for (let x = 1; x <= haystack.width - (needle.width + 1); x += 1) {
+      const point = Point.create(x, y);
+      const subgrid = slice(haystack, point, needle.width, needle.height);
+      if (match(subgrid, needle)) {
+        return point;
+      }
+    }
+  }
+  return null;
+};
+
+
+const includes = (haystack, needle) => indexOf(haystack, needle) !== null;
+
+
+export default {
+  create,
+  includes,
+  indexOf,
+  match,
+  matchPredicate,
+  slice,
+  sliceCol,
+  sliceRow,
+};
