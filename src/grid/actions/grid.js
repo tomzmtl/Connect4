@@ -1,15 +1,17 @@
 export default null;
 
 
-export const highlightColumn = x => ({
-  type: 'HIGHLIGHT_COLUMN',
+export const highlightCell = (x, y) => ({
+  type: 'HIGHLIGHT_CELL',
   x,
+  y,
 });
 
 
-export const unhighlightColumn = x => ({
-  type: 'UNHIGHLIGHT_COLUMN',
+export const unhighlightCell = (x, y) => ({
+  type: 'UNHIGHLIGHT_CELL',
   x,
+  y,
 });
 
 

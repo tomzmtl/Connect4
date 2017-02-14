@@ -2,7 +2,12 @@ import React, { PropTypes } from 'react';
 import '../scss/ui.scss';
 
 
-const renderUiElement = (label, value) => (<li key={label}><strong>{label}:</strong> {value}</li>);
+const renderUiElement = (label, value) => (
+  <li key={label}>
+    <strong>{label}:</strong>
+    <span>{value}</span>
+  </li>
+);
 
 
 const Ui = ({ player, turn, winner }) => {

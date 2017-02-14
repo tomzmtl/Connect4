@@ -7,7 +7,7 @@ export default ({ grid, game }, action) => {
   }
   switch (action.type) {
 
-    case 'HIGHLIGHT_COLUMN':
+    case 'HIGHLIGHT_CELL':
       return grid.cells.map((tile) => {
         if (tile.x === action.x) {
           return {
@@ -19,7 +19,7 @@ export default ({ grid, game }, action) => {
         return tile;
       });
 
-    case 'UNHIGHLIGHT_COLUMN':
+    case 'UNHIGHLIGHT_CELL':
       return grid.cells.map((tile) => {
         if (tile.x !== action.x) {
           return tile;

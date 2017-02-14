@@ -2,22 +2,21 @@ import React, { PropTypes } from 'react';
 import { TILE_SIZE } from '../../core/config';
 
 
-const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, player }) => {
+const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted }) => {
   const classNames = ['tile'];
 
-  if (data.highlightedY) {
-    classNames.push(`highlight__player-${player}`);
+  if (highlighted.x || highlighted.y) {
+    classNames.push('highlight');
   }
 
   if (data.owner) {
-    classNames.push('owned');
-    classNames.push(`owned__player-${data.owner}`);
+    classNames.push('owned', `owner-player-${data.owner}`);
   }
 
   const tileProps = {
     className: classNames.join(' '),
-    onMouseEnter: () => onTileEnter(data.x),
-    onMouseLeave: () => onTileLeave(data.x),
+    onMouseEnter: () => onTileEnter(data.x, data.y),
+    onMouseLeave: () => onTileLeave(data.x, data.y),
     style: {
       width: TILE_SIZE,
       height: TILE_SIZE,
@@ -30,10 +29,6 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, player }) => {
 
   const innerProps = {
     className: 'inner',
-    // style: {
-    //   width: size - 2,
-    //   height: size - 2,
-    // },
   };
 
   return (
@@ -46,11 +41,11 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, player }) => {
 
 Tile.propTypes = {
   data: PropTypes.object.isRequired,
+  highlighted: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   onTileEnter: PropTypes.func.isRequired,
   onTileLeave: PropTypes.func.isRequired,
   placeTile: PropTypes.func.isRequired,
-  player: PropTypes.number.isRequired,
 };
 
 

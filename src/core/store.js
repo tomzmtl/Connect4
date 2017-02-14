@@ -22,6 +22,12 @@ const s = {
     winner: null,
   },
   grid: Grid.create(7, 6, times(42, initTiles)),
+  ui: {
+    highlight: {
+      x: null,
+      y: null,
+    },
+  },
 };
 
 

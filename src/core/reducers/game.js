@@ -20,8 +20,6 @@ export default (state, action) => {
 
       const winner = hasWinner(newGrid, state.game.player);
 
-      console.log(winner);
-
       if (winner) {
         return {
           ...state.game,

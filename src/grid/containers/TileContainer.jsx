@@ -1,18 +1,25 @@
 import { connect } from 'react-redux';
-import { highlightColumn, unhighlightColumn, placeTile } from '../actions/grid';
+import { highlightCell, unhighlightCell, placeTile } from '../actions/grid';
 import Tile from '../components/Tile';
 
-const mapStateToProps = (state, ownProps) => ({
-  player: state.game.player,
-  data: state.grid.cells[ownProps.index],
-});
+const mapStateToProps = (state, ownProps) => {
+  const data = state.grid.cells[ownProps.index];
+
+  return {
+    data,
+    highlighted: {
+      x: state.ui.highlight.x === data.x,
+      y: state.ui.highlight.y === data.y,
+    },
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  onTileEnter: (index) => {
-    dispatch(highlightColumn(index));
+  onTileEnter: (x, y) => {
+    dispatch(highlightCell(x, y));
   },
-  onTileLeave: (index) => {
-    dispatch(unhighlightColumn(index));
+  onTileLeave: (x, y) => {
+    dispatch(unhighlightCell(x, y));
   },
   placeTile: (index) => {
     dispatch(placeTile(index));

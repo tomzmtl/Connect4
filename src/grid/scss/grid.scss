@@ -1,7 +1,46 @@
-.grid {
+.grid,
+.grid-header {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+}
+
+
+.grid-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@keyframes arrow {
+  0%   { top: 0 }
+  50%  { top: 6px }
+  100% { top: 0 }
+}
+
+
+.grid-header {
+  div {
+    position: relative;
+    display: flex;
+    opacity: 0;
+    height: 40px;
+
+    .svg {
+      width: 32px;
+      height: 32px;
+      margin: auto;
+
+      path {
+        fill: white;
+      }
+    }
+
+    &.highlight {
+      opacity: 1;
+      animation: arrow 400ms infinite;
+    }
+  }
 }
 
 
@@ -23,11 +62,6 @@
     }
   }
 
-  &.highlight__player-1 .inner,
-  &.highlight__player-2 .inner {
-    background: #777;
-  }
-
   &.owned {
     .inner {
       width: 40px;
@@ -35,12 +69,28 @@
     }
   }
 
-  &.owned__player-1 .inner {
+  &.owner-player-1 .inner {
     background: #F44;
   }
 
-  &.owned__player-2 .inner {
+  &.owner-player-2 .inner {
     background: #FF4;
     color: black;
+  }
+}
+
+
+.winner {
+  .grid-header div {
+    &.highlight {
+      opacity: 0;
+    }
+  }
+
+  .tile:not(.owned) {
+    .inner {
+      transition: 5s;
+      opacity: 0;
+    }
   }
 }
