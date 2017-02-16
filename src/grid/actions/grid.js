@@ -15,7 +15,24 @@ export const unhighlightCell = (x, y) => ({
 });
 
 
-export const placeTile = index => ({
-  type: 'PLACE_TILE',
-  index,
+export const nextTurn = () => ({
+  type: 'NEXT_TURN',
 });
+
+
+export const placeTile = index => (dispatch, getState) => {
+  if (getState().game.locked) {
+    return;
+  }
+
+  dispatch({
+    type: 'PLACE_TILE',
+    index,
+  });
+
+  window.setTimeout(() => {
+    if (!getState().game.winner) {
+      dispatch(nextTurn());
+    }
+  }, 500);
+};

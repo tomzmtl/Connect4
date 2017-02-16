@@ -17,7 +17,7 @@ const logger = createLogger({
   diff: true,
 });
 
-const store = createStore(reducer, initialStore, applyMiddleware(logger, thunk));
+const store = createStore(reducer, initialStore, applyMiddleware(thunk, logger));
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

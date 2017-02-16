@@ -20,6 +20,12 @@ export default (state, action) => {
         game: game(state, action),
       };
 
+    case 'NEXT_TURN':
+      return {
+        ...state,
+        game: game(state, action),
+      };
+
     default:
       return state;
   }
