@@ -6,6 +6,7 @@ const mapStateToProps = state => ({
   height: state.grid.height,
   highlightX: state.ui.highlight.x,
   winner: state.game.winner,
+  player: state.game.player,
 });
 
 export default connect(mapStateToProps)(Grid);

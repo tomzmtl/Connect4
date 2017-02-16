@@ -22,10 +22,10 @@ const renderHeader = (width, highlight) =>
   });
 
 
-const Grid = ({ width, height, highlightX, winner }) => {
+const Grid = ({ width, height, highlightX, winner, player }) => {
   const classes = winner ? `winner winner-${winner}` : '';
   return (
-    <div className={`grid-container ${classes}`}>
+    <div className={`grid-container ${classes} turn-player-${player}`}>
       <div className="grid-header">
         {renderHeader(width, highlightX)}
       </div>
