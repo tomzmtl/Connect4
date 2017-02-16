@@ -6,7 +6,7 @@ module.exports = {
 
   entry: ['./src/core/app.js'],
   output: {
-    filename: publicPath('js/bundle.js'),
+    filename: publicPath('bundle.js'),
   },
 
   devtool: 'source-map',
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin(publicPath('css/styles.css'), {
+    new ExtractTextPlugin(publicPath('styles.css'), {
       allChunks: true,
     }),
   ],

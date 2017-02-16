@@ -6,10 +6,10 @@
   "repository": "https://github.com/tomzmtl/Spark",
   "scripts": {
     "lint": "eslint src/**/*.js || true",
-    "start": "webpack-dev-server --port 3000",
+    "start": "npm run build; node server.js",
+    "build": "webpack",
     "test": "mocha --opts config/mocha.opts --harmony || true",
-    "travis": "mocha --opts config/travis.opts --harmony",
-    "webpack": "webpack --watch"
+    "travis": "mocha --opts config/travis.opts --harmony"
   },
   "author": "Thomas Andreo",
   "license": "MIT",
@@ -35,6 +35,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "expectations": "^0.6.0",
+    "express": "^4.14.1",
     "lodash.take": "^4.1.1",
     "lodash.times": "^4.3.2",
     "mocha": "^3.0.2",
