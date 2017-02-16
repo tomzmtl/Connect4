@@ -3,34 +3,38 @@ import { hasWinner } from '../helpers/game.js';
 
 
 export default (state, action) => {
+  const { game } = state;
   switch (action.type) {
 
     case 'PLACE_TILE':
-      if (state.grid.cells[action.index].owner || state.game.winner) {
-        return state.game;
-      }
-
       return {
-        ...state.game,
+        ...game,
         locked: true,
       };
 
     case 'NEXT_TURN': {
       const newState = {
-        ...state.game,
+        ...game,
         locked: false,
-        player: state.game.player === 1 ? 2 : 1,
-        turn: state.game.turn + 1,
+        player: game.player === 1 ? 2 : 1,
+        turn: game.turn + 1,
       };
 
       const newGrid = grid(state, action);
 
-      const winner = hasWinner(newGrid, state.game.player);
+      const winner = hasWinner(newGrid, game.player);
 
       if (winner) {
         return {
-          ...state.game,
-          winner: state.game.player,
+          ...game,
+          winner: game.player,
+        };
+      }
+
+      if (!winner && game.turn === 42) {
+        return {
+          ...game,
+          draw: true,
         };
       }
 

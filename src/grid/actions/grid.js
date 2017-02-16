@@ -21,7 +21,8 @@ export const nextTurn = () => ({
 
 
 export const placeTile = index => (dispatch, getState) => {
-  if (getState().game.locked) {
+  const { game, grid } = getState();
+  if (game.locked || grid.cells[index].owner) {
     return;
   }
 

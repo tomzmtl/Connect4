@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import times from 'lodash.times';
+import classnames from 'classnames';
 import Tile from '../containers/TileContainer';
 import { TILE_SIZE } from '../../core/config';
 import '../scss/grid.scss';
@@ -22,10 +23,16 @@ const renderHeader = (width, highlight) =>
   });
 
 
-const Grid = ({ width, height, highlightX, winner, player }) => {
-  const classes = winner ? `winner winner-${winner}` : '';
+const Grid = ({ width, height, highlightX, winner, player, draw }) => {
+  const classes = classnames({
+    'grid-container': true,
+    winner,
+    [`winner-${winner}`]: winner,
+    draw,
+    [`turn-player-${player}`]: true,
+  });
   return (
-    <div className={`grid-container ${classes} turn-player-${player}`}>
+    <div className={classes}>
       <div className="grid-header">
         {renderHeader(width, highlightX)}
       </div>
@@ -41,6 +48,9 @@ Grid.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   highlightX: PropTypes.number,
+  winner: PropTypes.number,
+  player: PropTypes.number.isRequired,
+  draw: PropTypes.bool.isRequired,
 };
 
 

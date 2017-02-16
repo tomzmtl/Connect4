@@ -2,16 +2,23 @@ import React, { PropTypes } from 'react';
 import '../scss/ui.scss';
 
 
-const renderUiElement = (label, value) => (
-  <li key={label}>
-    <strong>{label}:</strong>
-    <span>{value}</span>
-  </li>
-);
+const renderUiElement = (label, value = null) => {
+  const val = value !== null ? <span>: {value}</span> : null;
+  return (
+    <li key={label}>
+      <strong>{label}</strong>
+      {val}
+    </li>
+  );
+};
 
 
-const Ui = ({ player, turn, winner }) => {
+const Ui = ({ player, turn, winner, draw }) => {
   const renderUi = () => {
+    if (draw) {
+      return renderUiElement('Draw!');
+    }
+
     if (winner) {
       return renderUiElement('Winner', winner);
     }
@@ -36,6 +43,7 @@ Ui.propTypes = {
   player: PropTypes.number.isRequired,
   turn: PropTypes.number.isRequired,
   winner: PropTypes.number,
+  draw: PropTypes.bool,
 };
 
 

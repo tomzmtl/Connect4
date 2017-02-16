@@ -17,6 +17,7 @@ const initTiles = (index) => {
 
 const s = {
   game: {
+    draw: false,
     locked: false,
     player: 1,
     turn: 1,
