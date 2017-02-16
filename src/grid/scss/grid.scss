@@ -1,3 +1,20 @@
+$h: random(360)-1;
+$s: 80;
+$l: 50;
+
+$p1: hsl($h, 80, 75);
+$p2: adjust-hue($p1, 180deg);
+
+
+
+
+
+
+
+
+
+
+
 .grid,
 .grid-header {
   display: flex;
@@ -14,7 +31,7 @@
 
 @keyframes arrow {
   0%   { top: 0 }
-  50%  { top: 6px }
+  50%  { top: 10px }
   100% { top: 0 }
 }
 
@@ -70,12 +87,13 @@
   }
 
   &.owner-player-1 .inner {
-    background: #F44;
+    background: $p1;
+    box-shadow: 0 0 20px $p1;
   }
 
   &.owner-player-2 .inner {
-    background: #FF4;
-    color: black;
+    background: $p2;
+    box-shadow: 0 0 20px $p2;
   }
 }
 
@@ -97,9 +115,9 @@
 
 
 .turn-player-1 .grid-header div .svg path {
-  fill: #F44;
+  fill: $p1;
 }
 
 .turn-player-2 .grid-header div .svg path {
-  fill: #FF4;
+  fill: $p2;
 }
