@@ -1,6 +1,6 @@
 {
   "name": "connect4",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Single Page App Boilerplate",
   "main": "index.html",
   "repository": "https://github.com/tomzmtl/Spark",
@@ -8,6 +8,7 @@
     "lint": "eslint src/**/*.js || true",
     "start": "nodemon server.js",
     "build": "webpack",
+    "webpack": "webpack --watch",
     "test": "mocha --opts config/mocha.opts --harmony || true",
     "travis": "mocha --opts config/travis.opts --harmony",
     "heroku-postbuild": "npm run build"

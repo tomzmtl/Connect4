@@ -39,6 +39,9 @@ const Grid = ({ width, height, highlightX, winner, player, draw }) => {
       <div className="grid" style={{ width: TILE_SIZE * width }}>
         {renderTiles(width, height)}
       </div>
+      <div className="winner-banner">
+        <div className="text">Winner!</div>
+      </div>
     </div>
   );
 };

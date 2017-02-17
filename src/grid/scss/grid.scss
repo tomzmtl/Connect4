@@ -1,16 +1,9 @@
 $h: random(360)-1;
-$s: 80;
-$l: 50;
+$s: 90;
+$l: 70;
 
 $p1: hsl($h, 80, 75);
 $p2: adjust-hue($p1, 180deg);
-
-
-
-
-
-
-
 
 
 
@@ -24,6 +17,7 @@ $p2: adjust-hue($p1, 180deg);
 
 
 .grid-container {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
 }
@@ -97,6 +91,15 @@ $p2: adjust-hue($p1, 180deg);
   }
 }
 
+.winner-banner {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 .winner, .draw {
   .grid-header div {
@@ -110,6 +113,49 @@ $p2: adjust-hue($p1, 180deg);
       transition: 5s;
       opacity: 0;
     }
+  }
+}
+
+
+$banner-angle: 15deg;
+
+
+@keyframes winner {
+  0% {
+    transform: scale(1) rotateZ($banner-angle);
+  }
+
+  50% {
+    transform: scale(0.9) rotateZ($banner-angle);
+  }
+
+  100% {
+    transform: scale(1) rotateZ($banner-angle);
+  }
+}
+
+
+.winner {
+  .winner-banner {
+    display: flex;
+
+    .text {
+      margin: auto;
+      background: rgba(0,0,0,0.8);
+      padding: 30px;
+      font-size: 80px;
+      font-weight: bold;
+      transform: rotateZ($banner-angle);
+      animation: 600ms winner infinite ease-out;
+    }
+  }
+
+  &.winner-1 .winner-banner {
+    color: $p1;
+  }
+
+  &.winner-2 .winner-banner {
+    color: $p2;
   }
 }
 
