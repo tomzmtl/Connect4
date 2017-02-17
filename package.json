@@ -6,7 +6,7 @@
   "repository": "https://github.com/tomzmtl/Spark",
   "scripts": {
     "lint": "eslint src/**/*.js || true",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "build": "webpack",
     "test": "mocha --opts config/mocha.opts --harmony || true",
     "travis": "mocha --opts config/travis.opts --harmony",
@@ -20,6 +20,7 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^6.9.0",
+    "nodemon": "^1.11.0",
     "webpack-dev-server": "^1.15.1"
   },
   "dependencies": {
