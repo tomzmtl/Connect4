@@ -6,7 +6,7 @@
   "repository": "https://github.com/tomzmtl/Spark",
   "scripts": {
     "lint": "eslint src/**/*.js || true",
-    "start": "npm run build; node server.js",
+    "start": "node server.js",
     "build": "webpack",
     "test": "mocha --opts config/mocha.opts --harmony || true",
     "travis": "mocha --opts config/travis.opts --harmony",
