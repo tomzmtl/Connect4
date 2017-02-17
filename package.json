@@ -6,7 +6,8 @@
   "repository": "https://github.com/tomzmtl/Spark",
   "scripts": {
     "lint": "eslint src/**/*.js || true",
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "build": "webpack",
     "webpack": "webpack --watch",
     "test": "mocha --opts config/mocha.opts --harmony || true",
