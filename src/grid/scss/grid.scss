@@ -1,11 +1,4 @@
-$h: random(360)-1;
-$s: 90;
-$l: 70;
-
-$p1: hsl($h, 80, 75);
-$p2: adjust-hue($p1, 180deg);
-
-
+@import '../../core/scss/variables';
 
 
 .grid,
@@ -18,8 +11,7 @@ $p2: adjust-hue($p1, 180deg);
 
 .grid-container {
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
 

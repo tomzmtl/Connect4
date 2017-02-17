@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 import '../scss/ui.scss';
 
 
-const renderUiElement = (label, value = null) => {
-  const val = value !== null ? <span>: {value}</span> : null;
+const renderUiElement = (label, value = null, classes = '') => {
+  const val = value !== null ? <strong>{value}</strong> : null;
   return (
-    <li key={label}>
-      <strong>{label}</strong>
+    <li key={label} className={classes}>
+      <span>{label.concat(value !== null ? ':' : '')}</span>
       {val}
     </li>
   );
@@ -25,7 +25,7 @@ const Ui = ({ player, turn, winner, draw }) => {
 
     return [
       renderUiElement('Turn', turn),
-      renderUiElement('Player', player),
+      renderUiElement('Player', player, `player-${player}`),
     ];
   };
 

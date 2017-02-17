@@ -1,0 +1,6 @@
+$h: random(360)-1;
+$s: 90;
+$l: 70;
+
+$p1: hsl($h, 80, 75);
+$p2: adjust-hue($p1, 180deg);

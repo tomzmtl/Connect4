@@ -1,6 +1,12 @@
+@import '../../core/scss/variables';
+
+
 .ui {
   display: flex;
-  margin-bottom: 50px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
   text-align: center;
   justify-content: center;
 
@@ -15,7 +21,14 @@
     margin: 0 20px;
     padding: 1em 1.2em;
     border-radius: 3px;
-    background: rgba(0,0,0,0.3);
     font-size: 16px;
+
+    &.player-1 strong {
+      color: $p1;
+    }
+
+    &.player-2 strong {
+      color: $p2;
+    }
   }
 }
