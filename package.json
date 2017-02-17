@@ -9,7 +9,8 @@
     "start": "npm run build; node server.js",
     "build": "webpack",
     "test": "mocha --opts config/mocha.opts --harmony || true",
-    "travis": "mocha --opts config/travis.opts --harmony"
+    "travis": "mocha --opts config/travis.opts --harmony",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Thomas Andreo",
   "license": "MIT",
