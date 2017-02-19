@@ -8,9 +8,9 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducers/app';
 import initialStore from './store';
-import App from './components/App';
+import App from './containers/AppContainer';
 
-import './scss/app.scss';
+import '../scss/app.scss';
 
 const logger = createLogger({
   collapsed: true,

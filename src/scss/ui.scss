@@ -1,0 +1,99 @@
+.ui {
+  position: relative;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 20px;
+    padding: 0.6em 1em;
+    border-radius: 10px;
+    font-size: 16px;
+
+    &.player-1 {
+      color: $p1;
+    }
+
+    &.player-2 {
+      color: $p2;
+    }
+  }
+}
+
+
+.turn-player-1 li.player-1 {
+  color: #222;
+  font-weight: bold;
+  background: $p1;
+  box-shadow: 0 0 15px $p1;
+}
+
+.turn-player-2 li.player-2 {
+  color: #222;
+  font-weight: bold;
+  background: $p2;
+  box-shadow: 0 0 15px $p2;
+}
+
+
+$banner-angle: 10deg;
+
+
+@keyframes winner {
+  0%, 100% {
+    transform: scale(1) rotateZ($banner-angle);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.9) rotateZ($banner-angle);
+    opacity: 0.95;
+  }
+}
+
+
+.winner-banner {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.winner {
+  .ui ul {
+    opacity: 0;
+  }
+
+  .winner-banner {
+    display: flex;
+
+    .text {
+      margin: auto;
+      background: #111;
+      padding: 12px 30px;
+      font-size: 50px;
+      font-weight: bold;
+      transform: rotateZ($banner-angle);
+      animation: 600ms winner infinite ease-out;
+    }
+  }
+
+  &.winner-1 .winner-banner {
+    color: $p1;
+  }
+
+  &.winner-2 .winner-banner {
+    color: $p2;
+  }
+}

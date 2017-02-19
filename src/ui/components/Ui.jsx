@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import '../scss/ui.scss';
 
 
 const renderUiElement = (label, value = null, classes = '') => {
@@ -13,19 +12,17 @@ const renderUiElement = (label, value = null, classes = '') => {
 };
 
 
-const Ui = ({ player, turn, winner, draw }) => {
+const Ui = ({ game }) => {
+  const { draw, player } = game;
+
   const renderUi = () => {
     if (draw) {
       return renderUiElement('Draw!');
     }
 
-    if (winner) {
-      return renderUiElement('Winner', winner);
-    }
-
     return [
-      renderUiElement('Turn', turn),
-      renderUiElement('Player', player, `player-${player}`),
+      <li key="p1" className="player-1">P1</li>,
+      <li key="p2" className="player-2">P2</li>,
     ];
   };
 
@@ -34,16 +31,16 @@ const Ui = ({ player, turn, winner, draw }) => {
       <ul>
         {renderUi()}
       </ul>
+      <div className="winner-banner">
+        <div className="text">P{player} wins!</div>
+      </div>
     </div>
   );
 };
 
 
 Ui.propTypes = {
-  player: PropTypes.number.isRequired,
-  turn: PropTypes.number.isRequired,
-  winner: PropTypes.number,
-  draw: PropTypes.bool,
+  game: PropTypes.object.isRequired,
 };
 
 
