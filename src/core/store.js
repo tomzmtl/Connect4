@@ -15,7 +15,7 @@ const initTiles = (index) => {
 };
 
 
-const s = {
+const s = JSON.parse(localStorage.getItem('game.save')) || {
   game: {
     draw: false,
     locked: false,
