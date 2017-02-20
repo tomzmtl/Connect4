@@ -17,31 +17,45 @@
     padding: 0.6em 1em;
     border-radius: 10px;
     font-size: 16px;
+  }
 
-    &.player-1 {
-      color: $p1;
+  .player {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      height: 5px;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  .p1 {
+    color: $p1;
+  }
+
+  .p2 {
+    color: $p2;
+  }
+
+  .active {
+    font-weight: bold;
+
+    &.p1::after {
+      background: $p1;
+      box-shadow: 0 0 15px $p1;
     }
 
-    &.player-2 {
-      color: $p2;
+    &.p2::after {
+      background: $p2;
+      box-shadow: 0 0 15px $p2;
     }
   }
 }
 
-
-.turn-player-1 li.player-1 {
-  color: #222;
-  font-weight: bold;
-  background: $p1;
-  box-shadow: 0 0 15px $p1;
-}
-
-.turn-player-2 li.player-2 {
-  color: #222;
-  font-weight: bold;
-  background: $p2;
-  box-shadow: 0 0 15px $p2;
-}
 
 
 $banner-angle: 10deg;

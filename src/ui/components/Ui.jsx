@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 
 
 const renderUiElement = (label, value = null, classes = '') => {
@@ -20,10 +21,14 @@ const Ui = ({ game }) => {
       return renderUiElement('Draw!');
     }
 
-    return [
-      <li key="p1" className="player-1">P1</li>,
-      <li key="p2" className="player-2">P2</li>,
-    ];
+    return [1, 2].map((p) => {
+      const classes = classnames({
+        active: player === p,
+        player,
+        [`p${p}`]: true,
+      });
+      return <li key={`p${p}`} className={classes}>P{p}</li>;
+    });
   };
 
   return (
