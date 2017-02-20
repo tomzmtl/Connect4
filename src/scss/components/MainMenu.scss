@@ -1,0 +1,35 @@
+.MainMenu {
+  display: flex;
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  transition: 200ms;
+
+  .button {
+    color: white;
+  }
+
+  .new {
+    font-size: 14px;
+  }
+
+  .close {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    .fill-primary {
+      fill: white;
+    }
+  }
+
+  &.open {
+    transform: translateY(0);
+  }
+}

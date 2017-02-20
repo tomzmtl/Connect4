@@ -117,3 +117,7 @@ $banner-angle: 10deg;
     color: $p2;
   }
 }
+
+
+@import './components/MainMenu';
+@import './components/MainMenuSwitch';

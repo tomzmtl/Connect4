@@ -2,6 +2,7 @@ import grid from './grid';
 import game from './game';
 import ui from './ui';
 import { saveGame } from '../helpers/storage';
+import initialState from '../state';
 
 
 export default (state, action) => {
@@ -26,6 +27,23 @@ export default (state, action) => {
       const newState = {
         ...state,
         game: game(state, action),
+      };
+
+      saveGame(newState);
+
+      return newState;
+    }
+
+    case 'TOGGLE_MAIN_MENU':
+      return {
+        ...state,
+        ui: ui(state, action),
+      };
+
+    case 'RESET_GAME': {
+      const newState = {
+        ...initialState,
+        ui: ui(state, action),
       };
 
       saveGame(newState);

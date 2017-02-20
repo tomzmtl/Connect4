@@ -14,4 +14,7 @@ module.exports = {
       experimentalObjectRestSpread: true,
     },
   },
+  rules: {
+    'react/forbid-prop-types': 'off',
+  },
 };

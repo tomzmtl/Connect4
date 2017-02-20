@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import times from 'lodash.times';
-import classnames from 'classnames';
 import Tile from '../containers/TileContainer';
 import GridHeader from './GridHeader';
 import { TILE_SIZE } from '../../core/config';

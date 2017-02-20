@@ -18,6 +18,18 @@ export default ({ ui }, action) => {
         },
       };
 
+    case 'TOGGLE_MAIN_MENU':
+      return {
+        ...ui,
+        menuOpen: !ui.menuOpen,
+      };
+
+    case 'RESET_GAME':
+      return {
+        ...ui,
+        menuOpen: false,
+      };
+
     default: return ui;
   }
 };
