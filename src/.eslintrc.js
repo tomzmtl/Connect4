@@ -15,6 +15,7 @@ module.exports = {
     },
   },
   rules: {
+    'max-len': 'warn',
     'react/forbid-prop-types': 'off',
   },
 };

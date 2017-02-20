@@ -1,7 +1,6 @@
 .MainMenu {
   display: flex;
   position: absolute;
-  padding: 10px;
   top: 0;
   left: 0;
   width: 100%;
@@ -12,19 +11,29 @@
   transition: 200ms;
 
   .button {
+    padding: 10px;
     color: white;
+
+    &:hover {
+      transition: 100ms;
+      background: #222;
+    }
   }
 
   .new {
+    padding-left: 15px;
+    padding-right: 15px;
     font-size: 14px;
   }
 
   .close {
-    width: 16px;
-    height: 16px;
+    display: flex;
     cursor: pointer;
 
-    .fill-primary {
+    .svg {
+      margin: auto;
+      width: 16px;
+      height: 16px;
       fill: white;
     }
   }
