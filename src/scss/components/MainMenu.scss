@@ -4,41 +4,48 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #333;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
   color: white;
-  justify-content: space-between;
-  transform: translateY(-100%);
-  transition: 200ms;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 20;
+  transition: opacity 300ms;
+
+  .menu {
+    width: 300px;
+    margin: auto;
+  }
 
   .button {
-    padding: 10px;
-    color: white;
+    width: 100%;
+    padding: 1em 0;
+    margin-bottom: 20px;
+    color: black;
+    background: #888;
+    text-align: center;
+    transition: transform 100ms;
+    font-size: 18px;
 
     &:hover {
       transition: 100ms;
-      background: #222;
+      background: $p1;
+      transform: scale(1.1);
     }
   }
 
   .new {
     padding-left: 15px;
     padding-right: 15px;
-    font-size: 14px;
   }
 
   .close {
-    display: flex;
-    cursor: pointer;
-
-    .svg {
-      margin: auto;
-      width: 16px;
-      height: 16px;
-      fill: white;
-    }
+    margin-top: 40px;
+    background: #666;
   }
 
   &.open {
-    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
 }
