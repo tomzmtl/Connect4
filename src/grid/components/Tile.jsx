@@ -1,20 +1,28 @@
+import classnames from 'classnames';
 import React, { PropTypes } from 'react';
 import { TILE_SIZE } from '../../core/config';
 
 
-const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted }) => {
-  const classNames = ['tile'];
-
-  if (highlighted.x || highlighted.y) {
-    classNames.push('highlight');
+const inWinningCells = (x, y, game) => {
+  if (!game.winner) {
+    return false;
   }
 
-  if (data.owner) {
-    classNames.push('owned', `owner-player-${data.owner}`);
-  }
+  return !!game.winningCells.find(c => c.x === x && c.y === y);
+};
+
+
+const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted, game }) => {
+  const className = classnames({
+    tile: true,
+    highlight: highlighted.x || highlighted.y,
+    owned: data.owner,
+    [`owner-player-${data.owner}`]: data.owner,
+    winning: inWinningCells(data.x, data.y, game),
+  });
 
   const tileProps = {
-    className: classNames.join(' '),
+    className,
     onMouseEnter: () => onTileEnter(data.x, data.y),
     onMouseLeave: () => onTileLeave(data.x, data.y),
     style: {
@@ -27,16 +35,13 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted })
     tileProps.onClick = () => placeTile(index);
   }
 
-  const innerProps = {
-    className: 'inner',
-  };
-
   return (
     <div {...tileProps}>
-      <div {...innerProps}>
+      <div className="inner">
         <span>{index}</span>
       </div>
-    </div>);
+    </div>
+  );
 };
 
 Tile.propTypes = {
@@ -46,6 +51,7 @@ Tile.propTypes = {
   onTileEnter: PropTypes.func.isRequired,
   onTileLeave: PropTypes.func.isRequired,
   placeTile: PropTypes.func.isRequired,
+  game: PropTypes.object.isRequired,
 };
 
 

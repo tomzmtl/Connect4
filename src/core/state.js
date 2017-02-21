@@ -22,6 +22,7 @@ export default {
     player: 1,
     turn: 1,
     winner: null,
+    winningCells: [],
   },
   grid: Grid.create(7, 6, times(42, initTiles)),
   ui: {

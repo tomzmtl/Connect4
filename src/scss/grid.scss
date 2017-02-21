@@ -87,10 +87,10 @@
     }
   }
 
-  .tile:not(.owned) {
+  .tile:not(.winning) {
     .inner {
       transition: 5s;
-      opacity: 0;
+      opacity: 0.1;
     }
   }
 }

@@ -1,5 +1,5 @@
 import grid from './grid';
-import { hasWinner } from '../helpers/game.js';
+import { getWinningCells } from '../helpers/game.js';
 
 
 export default (state, action) => {
@@ -22,16 +22,17 @@ export default (state, action) => {
 
       const newGrid = grid(state, action);
 
-      const winner = hasWinner(newGrid, game.player);
+      const winningCells = getWinningCells(newGrid, game.player);
 
-      if (winner) {
+      if (winningCells) {
         return {
           ...game,
+          winningCells,
           winner: game.player,
         };
       }
 
-      if (!winner && game.turn === 42) {
+      if (!winningCells && game.turn === 42) {
         return {
           ...game,
           draw: true,

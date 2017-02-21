@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
       x: state.ui.highlight.x === data.x,
       y: state.ui.highlight.y === data.y,
     },
+    game: state.game,
   };
 };
 
