@@ -13,7 +13,7 @@ const Component = ({ ui, onClose, onReset }) => {
       <div className="menu">
         <button className="button new" onClick={onReset}>New game</button>
         {/* <button className="button players">Edit players</button>*/}
-        <button className="button close" onClick={onClose}>Close menu</button>
+        <button className="button close" onClick={onClose}>Back</button>
       </div>
     </div>
   );

@@ -14,13 +14,17 @@
   li {
     display: inline-block;
     margin: 0 20px;
-    padding: 0.6em 1em;
+    padding: 0 0 1em 0;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .player {
     position: relative;
+
+    &, &::after {
+      transition: 200ms;
+    }
 
     &::after {
       content: '';
@@ -30,17 +34,18 @@
       height: 5px;
       left: 0;
       width: 100%;
+      background: #444;
       border-radius: 3px;
       box-shadow: 0 0 0 transparent;
     }
   }
 
   .p1 {
-    color: $p1;
+    color: desaturate(darken($p1, 50%), 80%);
   }
 
   .p2 {
-    color: $p2;
+    color: desaturate(darken($p2, 50%), 80%);
   }
 
   .active {
@@ -50,14 +55,22 @@
       transition: box-shadow 200ms;
     }
 
-    &.p1::after {
-      background: $p1;
-      box-shadow: 0 0 15px $p1;
+    &.p1 {
+      color: $p1;
+
+      &::after {
+        background: $p1;
+        box-shadow: 0 0 15px $p1;
+      }
     }
 
-    &.p2::after {
-      background: $p2;
-      box-shadow: 0 0 15px $p2;
+    &.p2 {
+      color: $p2;
+
+      &::after {
+        background: $p2;
+        box-shadow: 0 0 15px $p2;
+      }
     }
   }
 }
