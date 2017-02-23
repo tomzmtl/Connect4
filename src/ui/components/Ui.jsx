@@ -13,7 +13,7 @@ const renderUiElement = (label, value = null, classes = '') => {
 };
 
 
-const Ui = ({ game }) => {
+const Ui = ({ game, players }) => {
   const { draw, player } = game;
 
   const renderUi = () => {
@@ -21,13 +21,13 @@ const Ui = ({ game }) => {
       return renderUiElement('Draw!');
     }
 
-    return [1, 2].map((p) => {
+    return [1, 2].map((p, index) => {
       const classes = classnames({
         active: player === p,
         player,
         [`p${p}`]: true,
       });
-      return <li key={`p${p}`} className={classes}>P{p}</li>;
+      return <li key={`p${p}`} className={classes}>{players[index]}</li>;
     });
   };
 
@@ -37,7 +37,7 @@ const Ui = ({ game }) => {
         {renderUi()}
       </ul>
       <div className="winner-banner">
-        <div className="text">P{player} wins!</div>
+        <div className="text">{players[player - 1]} wins!</div>
       </div>
     </div>
   );
@@ -46,6 +46,7 @@ const Ui = ({ game }) => {
 
 Ui.propTypes = {
   game: PropTypes.object.isRequired,
+  players: PropTypes.array.isRequired,
 };
 
 

@@ -25,6 +25,10 @@ export default {
     winningCells: [],
   },
   grid: Grid.create(7, 6, times(42, initTiles)),
+  players: [
+    'Player 1',
+    'Player 2',
+  ],
   ui: {
     highlight: {
       x: null,
