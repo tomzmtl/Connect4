@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
+import PlayerField from './PlayerField';
+import { TILE_SIZE } from '../../core/config';
 
 
 const renderUiElement = (label, value = null, classes = '') => {
@@ -27,15 +29,21 @@ const Ui = ({ game, players }) => {
         player,
         [`p${p}`]: true,
       });
-      return <li key={`p${p}`} className={classes}>{players[index]}</li>;
+      return (
+        <li key={`p${p}`} className={classes}>
+          <PlayerField key={index} index={p} name={players[index]} />
+        </li>
+      );
     });
   };
 
+  const css = { width: TILE_SIZE * 7 };
+
   return (
-    <div className="ui">
-      <ul>
+    <div className="ui" style={css}>
+      <div className="players">
         {renderUi()}
-      </ul>
+      </div>
       <div className="winner-banner">
         <div className="text">{players[player - 1]} wins!</div>
       </div>

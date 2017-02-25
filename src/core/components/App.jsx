@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import Grid from '../../grid/containers/GridContainer';
 import Ui from '../../ui/containers/UiContainer';
-import MainMenuSwitch from '../../ui/containers/MainMenuSwitch';
 import MainMenu from '../../ui/containers/MainMenu';
 
 
@@ -19,10 +18,9 @@ const App = ({ game }) => {
 
   return (
     <div id="app" className={classes}>
-      <MainMenu />
-      <MainMenuSwitch />
       <Ui />
       <Grid />
+      <MainMenu />
     </div>
   );
 };

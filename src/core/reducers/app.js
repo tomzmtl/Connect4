@@ -35,6 +35,7 @@ export default (state, action) => {
     }
 
     case 'TOGGLE_MAIN_MENU':
+    case 'TOGGLE_PLAYERS_SCREEN':
       return {
         ...state,
         ui: ui(state, action),

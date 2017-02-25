@@ -24,6 +24,19 @@ export default ({ ui }, action) => {
         menuOpen: !ui.menuOpen,
       };
 
+    case 'TOGGLE_PLAYERS_SCREEN': {
+      const newState = {
+        ...ui,
+        editPlayers: !ui.editPlayers,
+      };
+
+      if (newState.editPlayers) {
+        newState.menuOpen = false;
+      }
+
+      return newState;
+    }
+
     case 'RESET_GAME':
       return {
         ...ui,

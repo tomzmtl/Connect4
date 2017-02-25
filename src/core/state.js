@@ -30,6 +30,7 @@ export default {
     'Player 2',
   ],
   ui: {
+    editPlayers: false,
     highlight: {
       x: null,
       y: null,
