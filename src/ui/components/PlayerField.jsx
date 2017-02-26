@@ -17,13 +17,15 @@ class PlayerField extends Component {
       className: 'editable',
       maxLength: 20,
       onChange: this.handleChange,
-      onBlur: this.handleBlur,
+      onBlur: () => this.props.updatePlayerName(this.props.index, this.state.value),
       type: 'text',
       value: this.state.value,
     };
 
+    const classes = 'PlayerField '.concat(this.props.classes);
+
     return (
-      <span className="PlayerField">
+      <span className={classes}>
         <input {...props} />
       </span>
     );

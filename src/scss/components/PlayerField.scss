@@ -1,10 +1,55 @@
 .PlayerField {
   position: relative;
+  display: inline-block;
+  margin: 0 20px;
+  padding: 0 0 1em 0;
+  border-radius: 10px;
+  font-size: 20px;
+
+  &.p1 {
+    .editable {
+      color: desaturate(darken($p1, 50%), 80%);
+    }
+
+    &.active {
+      .editable {
+        color: $p1;
+      }
+
+      &::after {
+        background: $p1;
+        box-shadow: 0 0 15px $p1;
+      }
+    }
+  }
+
+  &.p2 {
+    .editable {
+      color: desaturate(darken($p2, 50%), 80%);
+    }
+
+    &.active {
+      .editable {
+        color: $p2;
+      }
+
+      &::after {
+        background: $p2;
+        box-shadow: 0 0 15px $p2;
+      }
+    }
+  }
+
+  &.p1,
+  &.p2 {
+    .editable:focus {
+      color: white;
+      text-shadow: 0 2px 8px black;
+    }
+  }
 
   .editable {
     width: 100%;
-    color: white;
-    text-shadow: 0 2px 8px black;
     outline: none;
     background: transparent;
     border: none;
@@ -17,9 +62,16 @@
     content: '';
     display: block;
     position: absolute;
-    bottom: -15px;
+    bottom: -5px;
+    height: 5px;
     left: 0;
-    height: 15px;
     width: 100%;
+    background: #444;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3) inset;
+  }
+
+  &, &::after {
+    transition: 200ms;
   }
 }

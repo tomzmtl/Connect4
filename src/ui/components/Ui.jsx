@@ -15,7 +15,7 @@ const renderUiElement = (label, value = null, classes = '') => {
 };
 
 
-const Ui = ({ game, players }) => {
+const Ui = ({ game, players, updatePlayerName }) => {
   const { draw, player } = game;
 
   const renderUi = () => {
@@ -30,10 +30,10 @@ const Ui = ({ game, players }) => {
         [`p${p}`]: true,
       });
       return (
-        <li key={`p${p}`} className={classes}>
-          <PlayerField key={index} index={p} name={players[index]} />
-        </li>
+        <PlayerField key={index} index={p} name={players[index]} classes={classes} updatePlayerName={updatePlayerName} />
       );
+      // <li key={`p${p}`} className={classes}>
+      // </li>
     });
   };
 

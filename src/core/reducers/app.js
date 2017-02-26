@@ -52,6 +52,20 @@ export default (state, action) => {
       return newState;
     }
 
+    case 'UPDATE_PLAYER_NAME': {
+      const newPlayers = state.players.concat();
+      newPlayers[action.index - 1] = action.name;
+
+      const newState = {
+        ...state,
+        players: newPlayers,
+      };
+
+      saveGame(newState);
+
+      return newState;
+    }
+
     default:
       return state;
   }

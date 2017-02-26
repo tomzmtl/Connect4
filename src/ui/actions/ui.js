@@ -9,3 +9,10 @@ export const toggleMainMenu = () => ({
 export const togglePlayersScreen = () => ({
   type: 'TOGGLE_PLAYERS_SCREEN',
 });
+
+
+export const updatePlayerName = (index, name) => ({
+  type: 'UPDATE_PLAYER_NAME',
+  index,
+  name,
+});
