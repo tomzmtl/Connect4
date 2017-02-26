@@ -29,11 +29,18 @@ const Ui = ({ game, players, updatePlayerName }) => {
         player,
         [`p${p}`]: true,
       });
+
+      const props = {
+        classes,
+        index: p,
+        key: index,
+        name: players[index],
+        updatePlayerName,
+      };
+
       return (
-        <PlayerField key={index} index={p} name={players[index]} classes={classes} updatePlayerName={updatePlayerName} />
+        <PlayerField {...props} />
       );
-      // <li key={`p${p}`} className={classes}>
-      // </li>
     });
   };
 
@@ -55,6 +62,7 @@ const Ui = ({ game, players, updatePlayerName }) => {
 Ui.propTypes = {
   game: PropTypes.object.isRequired,
   players: PropTypes.array.isRequired,
+  updatePlayerName: PropTypes.func.isRequired,
 };
 
 

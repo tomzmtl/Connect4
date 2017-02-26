@@ -1,6 +1,7 @@
 import times from 'lodash.times';
 import Grid from './tiled/Grid';
 import { indexToCoords } from '../grid/helpers/grid';
+import { playerNames } from '../ui/constants';
 
 
 const initTiles = (index) => {
@@ -25,10 +26,7 @@ export default {
     winningCells: [],
   },
   grid: Grid.create(7, 6, times(42, initTiles)),
-  players: [
-    'Player 1',
-    'Player 2',
-  ],
+  players: playerNames,
   ui: {
     editPlayers: false,
     highlight: {

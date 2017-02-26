@@ -1,3 +1,4 @@
+import omit from 'lodash.omit';
 import grid from './grid';
 import game from './game';
 import ui from './ui';
@@ -43,7 +44,8 @@ export default (state, action) => {
 
     case 'RESET_GAME': {
       const newState = {
-        ...initialState,
+        ...state,
+        ...omit(initialState, 'players'),
         ui: ui(state, action),
       };
 

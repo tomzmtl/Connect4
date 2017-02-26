@@ -6,9 +6,44 @@
   border-radius: 10px;
   font-size: 20px;
 
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    height: 5px;
+    background: #444;
+    border-radius: 3px;
+  }
+
+  &::before {
+    width: 100%;
+    left: 0;
+  }
+
+  &::after {
+    width: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3) inset;
+  }
+
+  &, &::after {
+    transition: 200ms;
+  }
+
+  &.active {
+    &::after {
+      width: 100%;
+    }
+  }
+
   &.p1 {
     .editable {
       color: desaturate(darken($p1, 50%), 80%);
+    }
+
+    &::after {
+      right: 0;
     }
 
     &.active {
@@ -26,6 +61,10 @@
   &.p2 {
     .editable {
       color: desaturate(darken($p2, 50%), 80%);
+    }
+
+    &::after {
+      left: 0;
     }
 
     &.active {
@@ -54,24 +93,11 @@
     background: transparent;
     border: none;
     text-align: center;
-    transition: width 100ms ease-out;
+    transition: 100ms ease-out;
     font-family: monospace;
-  }
 
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -5px;
-    height: 5px;
-    left: 0;
-    width: 100%;
-    background: #444;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3) inset;
-  }
-
-  &, &::after {
-    transition: 200ms;
+    &:focus {
+      transform: scale(1.5);
+    }
   }
 }

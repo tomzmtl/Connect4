@@ -1,11 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { playerNames } from '../constants';
 
 
 class PlayerField extends Component {
   constructor(props) {
     super(props);
     this.state = { value: this.props.name };
+    this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleBlur() {
+    const val = this.state.value;
+    if (val === '') {
+      this.setState({ value: playerNames[this.props.index - 1] });
+    }
+    this.props.updatePlayerName(this.props.index, val);
   }
 
   handleChange(event) {
@@ -15,14 +25,14 @@ class PlayerField extends Component {
   render() {
     const props = {
       className: 'editable',
-      maxLength: 20,
+      maxLength: 14,
       onChange: this.handleChange,
-      onBlur: () => this.props.updatePlayerName(this.props.index, this.state.value),
+      onBlur: this.handleBlur,
       type: 'text',
       value: this.state.value,
     };
 
-    const classes = 'PlayerField '.concat(this.props.classes);
+    const classes = ['PlayerField', this.props.classes].join(' ');
 
     return (
       <span className={classes}>
@@ -31,6 +41,14 @@ class PlayerField extends Component {
     );
   }
 }
+
+
+PlayerField.propTypes = {
+  classes: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  updatePlayerName: PropTypes.func.isRequired,
+};
 
 
 export default PlayerField;
