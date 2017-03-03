@@ -1,4 +1,5 @@
 import grid from './grid';
+import { randomInt } from '../../core/helpers/number';
 import { getWinningCells } from '../helpers/game.js';
 
 
@@ -41,6 +42,12 @@ export default (state, action) => {
 
       return newState;
     }
+
+    case 'RESET_GAME':
+      return {
+        ...state,
+        player: randomInt(1, 2),
+      };
 
     default: return state.game;
   }

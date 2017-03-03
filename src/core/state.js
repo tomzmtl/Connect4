@@ -2,6 +2,7 @@ import times from 'lodash.times';
 import Grid from './tiled/Grid';
 import { indexToCoords } from '../grid/helpers/grid';
 import { playerNames } from '../ui/constants';
+import { randomInt } from './helpers/number';
 
 
 const initTiles = (index) => {
@@ -20,7 +21,7 @@ export default {
   game: {
     draw: false,
     locked: false,
-    player: 1,
+    player: randomInt(1, 2),
     turn: 1,
     winner: null,
     winningCells: [],
