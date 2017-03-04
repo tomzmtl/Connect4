@@ -1,28 +1,34 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Grid from '../../grid/containers/GridContainer';
 import Ui from '../../ui/containers/UiContainer';
 import MainMenu from '../../ui/containers/MainMenu';
 
 
-const App = ({ game }) => {
-  const { draw, locked, player, winner } = game;
-  const classes = classnames({
-    app: true,
-    draw,
-    locked,
-    [`turn-player-${player}`]: true,
-    winner,
-    [`winner-${winner}`]: winner,
-  });
+const App = class extends Component {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
 
-  return (
-    <div id="app" className={classes}>
-      <Ui />
-      <Grid />
-      <MainMenu />
-    </div>
-  );
+  render() {
+    const { draw, locked, player, winner } = this.props.game;
+    const classes = classnames({
+      app: true,
+      draw,
+      locked,
+      [`turn-player-${player}`]: true,
+      winner,
+      [`winner-${winner}`]: winner,
+    });
+
+    return (
+      <div id="app" className={classes}>
+        <Ui />
+        <Grid />
+        <MainMenu />
+      </div>
+    );
+  }
 };
 
 

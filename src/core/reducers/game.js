@@ -1,6 +1,6 @@
 import grid from './grid';
 import { randomInt } from '../../core/helpers/number';
-import { getWinningCells } from '../helpers/game.js';
+import getWinningCells from '../helpers/getWinningCells';
 
 
 export default (state, action) => {
@@ -16,10 +16,13 @@ export default (state, action) => {
     case 'NEXT_TURN': {
       const newState = {
         ...game,
-        locked: false,
         player: game.player === 1 ? 2 : 1,
         turn: game.turn + 1,
       };
+
+      if (newState.player === 1) {
+        newState.locked = false;
+      }
 
       const newGrid = grid(state, action);
 
@@ -45,7 +48,7 @@ export default (state, action) => {
 
     case 'RESET_GAME':
       return {
-        ...state,
+        ...game,
         player: randomInt(1, 2),
       };
 

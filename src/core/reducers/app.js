@@ -46,7 +46,7 @@ export default (state, action) => {
       const newState = {
         ...state,
         ...omit(initialState, 'players'),
-        game: game(state, action),
+        game: game(initialState, action),
         ui: ui(state, action),
       };
 

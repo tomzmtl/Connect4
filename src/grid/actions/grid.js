@@ -1,3 +1,6 @@
+import { cpuTurn } from '../../core/helpers/game';
+
+
 export default null;
 
 
@@ -15,9 +18,26 @@ export const unhighlightCell = (x, y) => ({
 });
 
 
-export const nextTurn = () => ({
-  type: 'NEXT_TURN',
-});
+export const nextTurn = () => (dispatch, getState) => {
+  dispatch({
+    type: 'NEXT_TURN',
+  });
+
+  const { game } = getState();
+
+  if (game.player === 2) {
+    cpuTurn(dispatch, getState);
+    return;
+  }
+
+  window.setTimeout(() => {
+    if (!getState().game.winner) {
+      dispatch({
+        type: 'NEXT_TURN',
+      });
+    }
+  }, 500);
+};
 
 
 export const placeTile = index => (dispatch, getState) => {
