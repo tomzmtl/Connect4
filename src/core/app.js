@@ -15,6 +15,12 @@ import '../scss/app.scss';
 const logger = createLogger({
   collapsed: true,
   diff: true,
+  predicate: (getState, action) => {
+    if (action.type.includes('HIGHLIGHT_CELL')) {
+      return false;
+    }
+    return true;
+  },
 });
 
 const store = createStore(reducer, initialStore, applyMiddleware(thunk, logger));

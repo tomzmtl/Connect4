@@ -19,6 +19,7 @@ const Grid = ({ game, grid, ui }) => {
   const headerProps = {
     highlight: highlight.x,
     locked,
+    scores: game.scores,
     width,
   };
   return (

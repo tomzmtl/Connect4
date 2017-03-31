@@ -8,11 +8,11 @@ import { randomInt } from './helpers/number';
 const initTiles = (index) => {
   const coords = indexToCoords(7, 6, index);
   return {
+    highlightedY: false,
     index,
+    owner: null,
     x: coords[0],
     y: coords[1],
-    owner: null,
-    highlightedY: false,
   };
 };
 
@@ -22,6 +22,10 @@ export default {
     draw: false,
     locked: false,
     player: randomInt(1, 2),
+    scores: [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+    ],
     turn: 1,
     winner: null,
     winningCells: [],

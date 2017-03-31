@@ -31,14 +31,14 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted, g
     },
   };
 
-  if (!data.owned) {
+  if (!data.owned && !game.locked) {
     tileProps.onClick = () => placeTile(index);
   }
 
   return (
     <div {...tileProps}>
       <div className="inner">
-        <span>{index}</span>
+        <span />
       </div>
     </div>
   );

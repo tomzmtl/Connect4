@@ -1,4 +1,5 @@
-import { col, lowestOwnedIndex } from '../../grid/helpers/grid.js';
+import Grid from '../tiled/Grid';
+import { lowestOwnedIndex } from '../../grid/helpers/grid.js';
 
 
 export default ({ grid, game }, action) => {
@@ -36,7 +37,7 @@ export default ({ grid, game }, action) => {
         return grid.cells;
       }
 
-      const index = lowestOwnedIndex(col(grid.cells, clicked.x));
+      const index = lowestOwnedIndex(Grid.sliceCol(grid, clicked.x + 1));
 
       const updated = {
         ...grid.cells[index],
