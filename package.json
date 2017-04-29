@@ -6,9 +6,8 @@
   "scripts": {
     "lint": "eslint src/**/*.js || true",
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js & webpack --watch",
     "build": "webpack",
-    "webpack": "webpack --watch",
     "test": "mocha --opts config/mocha.opts --harmony || true",
     "travis": "mocha --opts config/travis.opts --harmony",
     "heroku-postbuild": "npm run build"

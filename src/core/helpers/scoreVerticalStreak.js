@@ -1,12 +1,14 @@
 import Grid from '../../core/tiled/Grid';
 import Point from '../../core/tiled/Point';
-import { shallowEqual, arraySum } from '../../core/helpers/array';
+import { shallowEqual } from '../../core/helpers/array';
 
 
 export default (scores, grid, player) => {
   const p = player;
 
-  const vScores = scores.map(() => 0);
+  const newScores = [
+    ...scores,
+  ];
 
   for (let y = 1; y < 4; y += 1) {
     for (let x = 1; x <= 7; x += 1) {
@@ -15,29 +17,29 @@ export default (scores, grid, player) => {
 
       // 3/4
 
-      if (vScores[x - 1] < 100) {
+      if (newScores[x - 1] < 3) {
         if (shallowEqual(pattern, [null, p, p, p])) {
-          vScores[x - 1] = 100;
+          newScores[x - 1] = 3;
         }
       }
 
       // 2/4
 
-      if (vScores[x - 1] < 50) {
+      if (newScores[x - 1] < 2) {
         if (shallowEqual(pattern, [null, null, p, p])) {
-          vScores[x - 1] = 50;
+          newScores[x - 1] = 2;
         }
       }
 
       // 1/4
 
-      if (vScores[x - 1] < 25) {
+      if (newScores[x - 1] < 1) {
         if (shallowEqual(pattern, [null, null, null, p])) {
-          vScores[x - 1] = 25;
+          newScores[x - 1] = 1;
         }
       }
     }
   }
 
-  return arraySum(scores, vScores);
+  return newScores;
 };

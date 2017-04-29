@@ -1,7 +1,7 @@
 import Grid from '../../core/tiled/Grid';
 import Point from '../../core/tiled/Point';
-import { lowestOwnedCell } from '../../grid/helpers/grid';
 import { shallowEqual } from '../../core/helpers/array';
+import { lowestOwnedCell } from '../../grid/helpers/grid';
 
 
 const colScore = (grid, scores, x, y, score) => {
@@ -26,7 +26,10 @@ const colScore = (grid, scores, x, y, score) => {
     ...scores,
   ];
 
-  newScores[x - 1] = score;
+  if (scores[x - 1] < score) {
+    newScores[x - 1] = score;
+  }
+
   return newScores;
 };
 
@@ -42,78 +45,78 @@ export default (scores, grid, player) => {
 
       // 3/4
 
-      if (s[x - 1] < 100) {
+      if (s[x - 1] < 3) {
         if (shallowEqual(pattern, [null, p, p, p])) {
-          s = colScore(grid, s, x, y, 100);
+          s = colScore(grid, s, x, y, 3);
         }
 
         if (shallowEqual(pattern, [p, null, p, p])) {
-          s = colScore(grid, s, x + 1, y, 100);
+          s = colScore(grid, s, x + 1, y, 3);
         }
 
         if (shallowEqual(pattern, [p, p, null, p])) {
-          s = colScore(grid, s, x + 2, y, 100);
+          s = colScore(grid, s, x + 2, y, 3);
         }
 
         if (shallowEqual(pattern, [p, p, p, null])) {
-          s = colScore(grid, s, x + 3, y, 100);
+          s = colScore(grid, s, x + 3, y, 3);
         }
       }
 
       // 2/4
 
-      if (s[x - 1] < 50) {
+      if (s[x - 1] < 2) {
         if (shallowEqual(pattern, [null, null, p, p])) {
-          s = colScore(grid, s, x, y, 50);
-          s = colScore(grid, s, x + 1, y, 50);
+          s = colScore(grid, s, x, y, 2);
+          s = colScore(grid, s, x + 1, y, 2);
         }
 
         if (shallowEqual(pattern, [p, null, null, p])) {
-          s = colScore(grid, s, x + 1, y, 50);
-          s = colScore(grid, s, x + 2, y, 50);
+          s = colScore(grid, s, x + 1, y, 2);
+          s = colScore(grid, s, x + 2, y, 2);
         }
 
         if (shallowEqual(pattern, [p, p, null, null])) {
-          s = colScore(grid, s, x + 2, y, 50);
-          s = colScore(grid, s, x + 3, y, 50);
+          s = colScore(grid, s, x + 2, y, 2);
+          s = colScore(grid, s, x + 3, y, 2);
         }
 
         if (shallowEqual(pattern, [p, null, p, null])) {
-          s = colScore(grid, s, x + 1, y, 50);
-          s = colScore(grid, s, x + 3, y, 50);
+          s = colScore(grid, s, x + 1, y, 2);
+          s = colScore(grid, s, x + 3, y, 2);
         }
 
         if (shallowEqual(pattern, [null, p, null, p])) {
-          s = colScore(grid, s, x, y, 50);
-          s = colScore(grid, s, x + 2, y, 50);
+          s = colScore(grid, s, x, y, 2);
+          s = colScore(grid, s, x + 2, y, 2);
         }
       }
 
       // 1/4
 
-      if (s[x - 1] < 25) {
+      if (s[x - 1] < 1) {
         if (shallowEqual(pattern, [null, null, null, p])) {
-          s = colScore(grid, s, x, y, 25);
-          s = colScore(grid, s, x + 1, y, 25);
-          s = colScore(grid, s, x + 2, y, 25);
+          s = colScore(grid, s, x, y, 1);
+          s = colScore(grid, s, x + 1, y, 1);
+          s = colScore(grid, s, x + 2, y, 1);
         }
 
         if (shallowEqual(pattern, [null, null, p, null])) {
-          s = colScore(grid, s, x, y, 25);
-          s = colScore(grid, s, x + 1, y, 25);
-          s = colScore(grid, s, x + 3, y, 25);
+          s = colScore(grid, s, x, y, 1);
+          s = colScore(grid, s, x + 1, y, 1);
+          s = colScore(grid, s, x + 3, y, 1);
         }
 
         if (shallowEqual(pattern, [null, p, null, null])) {
-          s = colScore(grid, s, x, y, 25);
-          s = colScore(grid, s, x + 2, y, 25);
-          s = colScore(grid, s, x + 3, y, 25);
+          s = colScore(grid, s, x, y, 1);
+          s = colScore(grid, s, x + 2, y, 1);
+          s = colScore(grid, s, x + 3, y, 1);
         }
 
         if (shallowEqual(pattern, [p, null, null, null])) {
-          s = colScore(grid, s, x + 1, y, 25);
-          s = colScore(grid, s, x + 2, y, 25);
-          s = colScore(grid, s, x + 3, y, 25);
+          s = colScore(grid, s, x + 1, y, 1);
+          s = colScore(grid, s, x + 2, y, 1);
+          s = colScore(grid, s, x + 3, y, 1);
         }
       }
     }
