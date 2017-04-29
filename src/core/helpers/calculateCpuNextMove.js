@@ -7,29 +7,33 @@ export default ({ game }) => {
   }
 
   if ([2, 3].includes(game.turn)) {
-    return randomInt(0, 1);
+    return randomInt(0, 6);
   }
 
-  if ([4, 5].includes(game.turn)) {
-    return randomInt(5, 6);
-  }
+  const playerScores = game.scores[game.player - 1].map((s, i) => ({ index: i + 1, score: s }));
+  const opponent = game.player === 1 ? 2 : 1;
+  const opponentScores = game.scores[opponent - 1].map((s, i) => ({ index: i + 1, score: s }));
 
-  const scores = game.scores[game.player - 1].map((s, i) => ({ index: i + 1, score: s }));
+  // prevent opponent from winning, if applicable
+  for (let i = 0; i < playerScores.length; i += 1) {
+    if (opponentScores[i].score === 3) {
+      return i;
+    }
+  }
 
   // prepare an array of x-index that have the best next moves
-  const bestIndexes = scores.reduce((indexes, { score, index }) => {
+  const indexes = playerScores.reduce((idx, { score, index }) => {
     if (score === -1) {
-      return indexes;
+      return idx;
     }
 
-    const max = maxInArray(scores.map(i => i.score));
+    const diffScore = score - opponentScores.find(s => s.index === index).score;
 
-    if (score < max) {
-      return indexes;
-    }
-
-    return indexes.concat(index);
+    return idx.concat({ score: diffScore, index });
   }, []);
+
+  const bestScore = maxInArray(indexes.map(i => i.score));
+  const bestIndexes = indexes.filter(i => i.score === bestScore).map(i => i.index);
 
   const choice = randomInt(0, bestIndexes.length - 1);
 
