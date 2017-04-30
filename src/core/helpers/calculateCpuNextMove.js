@@ -22,18 +22,19 @@ export default ({ game }) => {
   }
 
   // prepare an array of x-index that have the best next moves
-  const indexes = playerScores.reduce((idx, { score, index }) => {
+  const bestIndexes = playerScores.reduce((indexes, { score, index }) => {
     if (score === -1) {
-      return idx;
+      return indexes;
     }
 
-    const diffScore = score - opponentScores.find(s => s.index === index).score;
+    const max = maxInArray(playerScores.map(i => i.score));
 
-    return idx.concat({ score: diffScore, index });
+    if (score < max) {
+      return indexes;
+    }
+
+    return indexes.concat(index);
   }, []);
-
-  const bestScore = maxInArray(indexes.map(i => i.score));
-  const bestIndexes = indexes.filter(i => i.score === bestScore).map(i => i.index);
 
   const choice = randomInt(0, bestIndexes.length - 1);
 
