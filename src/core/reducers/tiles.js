@@ -32,12 +32,10 @@ export default ({ grid, game }, action) => {
       });
 
     case 'PLACE_TILE': {
-      const clicked = grid.cells[action.index];
-      if (clicked.owner) {
-        return grid.cells;
+      const index = lowestOwnedIndex(Grid.sliceCol(grid, action.x + 1));
+      if (index === null) {
+        throw new Error(`NULL index. ${action.x}`);
       }
-
-      const index = lowestOwnedIndex(Grid.sliceCol(grid, clicked.x + 1));
 
       const updated = {
         ...grid.cells[index],

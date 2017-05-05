@@ -1,26 +1,16 @@
-import { cpuTurn } from '../helpers/game';
+import { wait } from './turn';
 
 
 export default null;
 
-
-export const resetGame = () => (dispatch, getState) => {
+export const resetGame = () => (dispatch) => {
   dispatch({
     type: 'RESET_GAME',
   });
 
-  const { game } = getState();
-
-  if (game.player === 2) {
-    cpuTurn(dispatch, getState);
-  }
+  dispatch(wait());
 };
 
-
-export const initializeApp = () => (dispatch, getState) => {
-  const { game } = getState();
-
-  if (game.player === 2) {
-    cpuTurn(dispatch, getState);
-  }
+export const initializeApp = () => (dispatch) => {
+  dispatch(wait());
 };

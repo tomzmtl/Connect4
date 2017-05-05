@@ -1,4 +1,4 @@
-import { cpuTurn } from '../../core/helpers/game';
+import { end, wait } from '../../core/actions/turn';
 
 
 export default null;
@@ -18,42 +18,12 @@ export const unhighlightCell = (x, y) => ({
 });
 
 
-export const nextTurn = () => (dispatch, getState) => {
-  dispatch({
-    type: 'NEXT_TURN',
-  });
-
-  const { game } = getState();
-
-  if (game.player === 2) {
-    cpuTurn(dispatch, getState);
-    return;
-  }
-
-  window.setTimeout(() => {
-    if (!getState().game.winner) {
-      dispatch({
-        type: 'NEXT_TURN',
-      });
-    }
-  }, 500);
-};
-
-
-export const placeTile = index => (dispatch, getState) => {
-  const { game, grid } = getState();
-  if (game.locked || grid.cells[index].owner) {
-    return;
-  }
-
+export const placeTile = x => (dispatch) => {
   dispatch({
     type: 'PLACE_TILE',
-    index,
+    x,
   });
 
-  window.setTimeout(() => {
-    if (!getState().game.winner) {
-      dispatch(nextTurn());
-    }
-  }, 500);
+  dispatch(end());
+  dispatch(wait());
 };

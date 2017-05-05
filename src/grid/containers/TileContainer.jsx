@@ -16,15 +16,9 @@ const mapStateToProps = ({ game, grid, ui }, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onTileEnter: (x, y) => {
-    dispatch(highlightCell(x, y));
-  },
-  onTileLeave: (x, y) => {
-    dispatch(unhighlightCell(x, y));
-  },
-  placeTile: (index) => {
-    dispatch(placeTile(index));
-  },
+  onTileEnter: (x, y) => { dispatch(highlightCell(x, y)); },
+  onTileLeave: (x, y) => { dispatch(unhighlightCell(x, y)); },
+  placeTile: (index) => { dispatch(placeTile(index)); },
 });
 
 export default connect(

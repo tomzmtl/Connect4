@@ -34,6 +34,7 @@ const App = class extends Component {
 
 App.propTypes = {
   game: PropTypes.object.isRequired,
+  initializeApp: PropTypes.func.isRequired,
 };
 
 

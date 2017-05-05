@@ -32,9 +32,10 @@ const Ui = ({ game, players, updatePlayerName }) => {
 
       const props = {
         classes,
+        cpu: players[index].cpu,
         index: p,
         key: index,
-        name: players[index],
+        name: players[index].name,
         updatePlayerName,
       };
 
@@ -52,7 +53,7 @@ const Ui = ({ game, players, updatePlayerName }) => {
         {renderUi()}
       </div>
       <div className="winner-banner">
-        <div className="text">{players[player - 1]} wins!</div>
+        <div className="text">{players[player - 1].name} wins!</div>
       </div>
     </div>
   );

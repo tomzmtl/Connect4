@@ -17,7 +17,7 @@ const initTiles = (index) => {
 };
 
 
-export default {
+const store = {
   game: {
     draw: false,
     locked: false,
@@ -31,7 +31,16 @@ export default {
     winningCells: [],
   },
   grid: Grid.create(7, 6, times(42, initTiles)),
-  players: playerNames,
+  players: [
+    {
+      name: playerNames[0],
+      cpu: false,
+    },
+    {
+      name: playerNames[1],
+      cpu: true,
+    },
+  ],
   ui: {
     editPlayers: false,
     highlight: {
@@ -41,3 +50,6 @@ export default {
     menuOpen: false,
   },
 };
+
+
+export default store;

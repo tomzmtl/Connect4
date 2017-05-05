@@ -26,7 +26,6 @@ export default (scores, grid, player) => {
       for (let x = 1; x <= 4; x += 1) {
         const pattern = ownerSliceXY(grid, x, y, direction);
 
-
         if (pattern.top.includes(false)) {
           continue;
         }

@@ -3,7 +3,7 @@ import Point from '../../core/tiled/Point';
 
 
 export default (grid, x, y, ne = true) => {
-  const indexes = ne ? [12, 9, 6, 3] : [15, 10, 5, 0];
+  const indexes = ne ? [12, 9, 6, 3] : [0, 5, 10, 15];
   const topSlice = Grid.slice(grid, Point.create(x, y), 4, 4);
   const bottomSlice = Grid.slice(grid, Point.create(x, y + 1), 4, 4);
 

@@ -12,7 +12,7 @@ const inWinningCells = (x, y, game) => {
 };
 
 
-const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted, game }) => {
+const Tile = ({ data, onTileEnter, onTileLeave, placeTile, highlighted, game }) => {
   const className = classnames({
     tile: true,
     highlight: highlighted.x || highlighted.y,
@@ -31,9 +31,11 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted, g
     },
   };
 
-  if (!data.owned && !game.locked) {
-    tileProps.onClick = () => placeTile(index);
-  }
+  tileProps.onClick = () => {
+    if (!data.owned && !game.locked) {
+      placeTile(data.x);
+    }
+  };
 
   return (
     <div {...tileProps}>
@@ -47,7 +49,6 @@ const Tile = ({ data, index, onTileEnter, onTileLeave, placeTile, highlighted, g
 Tile.propTypes = {
   data: PropTypes.object.isRequired,
   highlighted: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
   onTileEnter: PropTypes.func.isRequired,
   onTileLeave: PropTypes.func.isRequired,
   placeTile: PropTypes.func.isRequired,

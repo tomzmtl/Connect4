@@ -5,34 +5,33 @@ import calculateTilesScore from '../helpers/calculateTilesScore';
 
 
 export default (state, action) => {
-  const { game } = state;
+  const { game, grid: g } = state;
   switch (action.type) {
 
-    case 'PLACE_TILE': {
-      const newGrid = grid(state, action);
-
-      const s1 = calculateTilesScore(newGrid, 1);
-      const s2 = calculateTilesScore(newGrid, 2);
-
+    case 'PLACE_TILE':
       return {
         ...game,
         locked: true,
-        scores: [s1, s2],
       };
-    }
 
-    case 'NEXT_TURN': {
+    case 'TURN.WAIT':
+      return {
+        ...game,
+        scores: [1, 2].map(p => calculateTilesScore(g, p)),
+      };
+
+    case 'TURN.END': {
       const newState = {
         ...game,
         player: game.player === 1 ? 2 : 1,
         turn: game.turn + 1,
       };
 
-      if (newState.player === 1) {
-        newState.locked = false;
-      }
+      newState.locked = state.players[newState.player - 1].cpu;
 
       const newGrid = grid(state, action);
+
+      newState.scores = [1, 2].map(p => calculateTilesScore(newGrid, p));
 
       const winningCells = getWinningCells(newGrid, game.player);
 

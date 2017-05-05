@@ -18,13 +18,14 @@ export default (state, action) => {
       };
 
     case 'PLACE_TILE':
+    case 'TURN.WAIT':
       return {
         ...state,
         grid: grid(state, action),
         game: game(state, action),
       };
 
-    case 'NEXT_TURN': {
+    case 'TURN.END': {
       const newState = {
         ...state,
         game: game(state, action),

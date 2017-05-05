@@ -1,27 +1,9 @@
-import Grid from '../../core/tiled/Grid';
-import Point from '../../core/tiled/Point';
-import { shallowEqual } from '../../core/helpers/array';
-import { lowestOwnedCell } from '../../grid/helpers/grid';
+/* eslint-disable no-continue,no-loop-func */
+
+import ownerSliceX from './ownerSliceX';
 
 
-const colScore = (grid, scores, x, y, score) => {
-  if (x < 1 || x > 7) {
-    return scores;
-  }
-
-  const lowest = lowestOwnedCell(grid, x);
-
-  if (y < 6) {
-    const cellBelow = grid.cells.find(c => c.x === lowest.x && c.y === lowest.y + 1);
-    if (!cellBelow) {
-      return scores;
-    }
-
-    if (cellBelow.owner === null) {
-      return scores;
-    }
-  }
-
+const colScore = (scores, x, score) => {
   const newScores = [
     ...scores,
   ];
@@ -34,91 +16,46 @@ const colScore = (grid, scores, x, y, score) => {
 };
 
 
+const l = (x, y, log) => {
+  if (x === 4 && y === 6) {
+    console.log(log);
+  }
+};
+
+
 export default (scores, grid, player) => {
   let s = Array.from(scores);
   const p = player;
+  const op = p === 1 ? 2 : 1;
 
   for (let y = 6; y > 0; y -= 1) {
-    for (let x = 1; x <= 7; x += 1) {
-      const slice = Grid.slice(grid, Point.create(x, y), 4, 1);
-      const pattern = slice.cells.map(c => c.owner);
+    for (let x = 1; x <= 4; x += 1) {
+      const pattern = ownerSliceX(grid, x, y);
 
-      // 3/4
+      l(x, y, pattern);
 
-      if (s[x - 1] < 3) {
-        if (shallowEqual(pattern, [null, p, p, p])) {
-          s = colScore(grid, s, x, y, 3);
-        }
-
-        if (shallowEqual(pattern, [p, null, p, p])) {
-          s = colScore(grid, s, x + 1, y, 3);
-        }
-
-        if (shallowEqual(pattern, [p, p, null, p])) {
-          s = colScore(grid, s, x + 2, y, 3);
-        }
-
-        if (shallowEqual(pattern, [p, p, p, null])) {
-          s = colScore(grid, s, x + 3, y, 3);
-        }
+      if (pattern.top.includes(false)) {
+        continue;
       }
 
-      // 2/4
-
-      if (s[x - 1] < 2) {
-        if (shallowEqual(pattern, [null, null, p, p])) {
-          s = colScore(grid, s, x, y, 2);
-          s = colScore(grid, s, x + 1, y, 2);
-        }
-
-        if (shallowEqual(pattern, [p, null, null, p])) {
-          s = colScore(grid, s, x + 1, y, 2);
-          s = colScore(grid, s, x + 2, y, 2);
-        }
-
-        if (shallowEqual(pattern, [p, p, null, null])) {
-          s = colScore(grid, s, x + 2, y, 2);
-          s = colScore(grid, s, x + 3, y, 2);
-        }
-
-        if (shallowEqual(pattern, [p, null, p, null])) {
-          s = colScore(grid, s, x + 1, y, 2);
-          s = colScore(grid, s, x + 3, y, 2);
-        }
-
-        if (shallowEqual(pattern, [null, p, null, p])) {
-          s = colScore(grid, s, x, y, 2);
-          s = colScore(grid, s, x + 2, y, 2);
-        }
+      if (pattern.top.includes(op)) {
+        continue;
       }
 
-      // 1/4
-
-      if (s[x - 1] < 1) {
-        if (shallowEqual(pattern, [null, null, null, p])) {
-          s = colScore(grid, s, x, y, 1);
-          s = colScore(grid, s, x + 1, y, 1);
-          s = colScore(grid, s, x + 2, y, 1);
-        }
-
-        if (shallowEqual(pattern, [null, null, p, null])) {
-          s = colScore(grid, s, x, y, 1);
-          s = colScore(grid, s, x + 1, y, 1);
-          s = colScore(grid, s, x + 3, y, 1);
-        }
-
-        if (shallowEqual(pattern, [null, p, null, null])) {
-          s = colScore(grid, s, x, y, 1);
-          s = colScore(grid, s, x + 2, y, 1);
-          s = colScore(grid, s, x + 3, y, 1);
-        }
-
-        if (shallowEqual(pattern, [p, null, null, null])) {
-          s = colScore(grid, s, x + 1, y, 1);
-          s = colScore(grid, s, x + 2, y, 1);
-          s = colScore(grid, s, x + 3, y, 1);
-        }
+      if (pattern.bottom.includes(false)) {
+        continue;
       }
+
+      const indexes = pattern.top.reduce((indx, v, i) => {
+        if (v === null) {
+          return indx.concat(x + i);
+        }
+        return indx;
+      }, []);
+
+      indexes.forEach((gx) => {
+        s = colScore(s, gx, 4 - indexes.length);
+      });
     }
   }
 
