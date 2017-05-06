@@ -38,12 +38,6 @@ class PlayerField extends Component {
 
     return (
       <div className={classes}>
-        <div className="cpu-toggle">
-          <label>
-            <input type="checkbox" checked={this.props.cpu} />
-            <span>CPU {this.props.cpu}</span>
-          </label>
-        </div>
         <span>
           <input {...props} />
         </span>
@@ -55,7 +49,6 @@ class PlayerField extends Component {
 
 PlayerField.propTypes = {
   classes: PropTypes.string.isRequired,
-  cpu: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   updatePlayerName: PropTypes.func.isRequired,

@@ -16,13 +16,6 @@ const colScore = (scores, x, score) => {
 };
 
 
-const l = (x, y, log) => {
-  if (x === 4 && y === 6) {
-    console.log(log);
-  }
-};
-
-
 export default (scores, grid, player) => {
   let s = Array.from(scores);
   const p = player;
@@ -31,8 +24,6 @@ export default (scores, grid, player) => {
   for (let y = 6; y > 0; y -= 1) {
     for (let x = 1; x <= 4; x += 1) {
       const pattern = ownerSliceX(grid, x, y);
-
-      l(x, y, pattern);
 
       if (pattern.top.includes(false)) {
         continue;

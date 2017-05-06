@@ -58,7 +58,7 @@ export default (state, action) => {
 
     case 'UPDATE_PLAYER_NAME': {
       const newPlayers = state.players.concat();
-      newPlayers[action.index - 1] = action.name;
+      newPlayers[action.index - 1].name = action.name;
 
       const newState = {
         ...state,
